@@ -1,0 +1,28 @@
+$bgc: #525252;
+$blue: #20264A;
+$header_height: 60px;
+
+@font-face {
+	font-family: 'DIN Light';
+	src: url(../fonts/din-light-webfont.ttf);
+}
+
+@mixin textshadow ($c: #000) {
+	text-shadow: 0 2px 10px $c, 0 2px 2px $c;
+}
+
+@mixin fb ($a:space-between, $b:flex-start) {
+	display: flex;
+	justify-content: $a;
+	align-items: $b;
+	&>* {
+		flex: 1 0 auto;
+	}
+}
+@mixin cf () {
+	&::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}

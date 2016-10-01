@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>GEM</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<header class="global_header">
+			<div class="timer">
+				<span>AM</span>
+				<time>11:48</time>
+				<i class="fa fa-clock-o" aria-hidden="true"></i>
+			</div>
+			<div class="logo">
+				<img src="img/logo.png" alt="">
+			</div>
+			<div class="etc">
+				<div class="notification">
+					<i class="fa fa-bell-o" aria-hidden="true"></i>
+					<span class="badge">2</span>
+				</div>
+				<div class="settings">
+					<i class="fa fa-cog" aria-hidden="true"></i>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="app_panel app_home">
+				<a href="#id_ctrl" class="tit">
+					<div class="tit_inner">
+						<i class="fa fa-home" aria-hidden="true"></i>
+						<p>HOME CONTROL</p>
+					</div>
+				</a>
+				<div class="params_list">
+					<ul>
+						<li class="app_temp">
+							<div class="param_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></div>
+							<div class="param_tit">エアコン</div>
+							<div class="param_value">28<span class="unit">°C</span></div>
+							<div class="param_data">冷房｜強</div>
+						</li>
+						<li class="app_tv">
+							<div class="param_icon"><i class="fa fa-television" aria-hidden="true"></i></div>
+							<div class="param_tit">テレビ</div>
+							<div class="param_value">5<span class="unit">Ch</span></div>
+							<div class="param_data">14:04 東京地検の男8 #6<br>モズテレビ</div>
+						</li>
+						<li class="app_light">
+							<div class="param_icon"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></div>
+							<div class="param_tit">照明</div>
+							<div class="param_value">7<span class="unit"> / 10</span></div>
+							<div class="param_data">さわやか</div>
+						</li>
+						<li class="app_music">
+							<div class="param_icon"><i class="fa fa-music" aria-hidden="true"></i></div>
+							<div class="param_tit">音楽</div>
+							<div class="param_value"><img src="img/piano_album.png" alt=""></div>
+							<div class="param_data">往年のクラシック10選</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="app_panel app_photo">
+				<div class="tit">
+					<p>優香<span>さんより</span></p>
+				</div>
+			</div>
+
+			<div class="app_panel">
+				アプリケーション
+			</div>
+
+			<div class="app_panel">
+				アプリケーション
+			</div>
+
+
+		</main>
+
+	</div>
+
+	<!-- ホームコントロール詳細 -->
+	<div class="app_detail app_home" id="id_ctrl">
+		<div class="home_ctrl_main_side home_vertical_column">
+			<div class="tit">
+				<div class="tit_inner">
+					<ul class="ctrl_btns">
+						<li><div><i class="fa fa-sun-o" aria-hidden="true"></i><span>起床</span></div></li>
+						<li><div><i class="img_icon"><img src="img/icon_breakfast.png" alt="icon_breakfast"></i><span>朝食</span></div></li>
+						<li><div><i class="fa fa-building-o" aria-hidden="true"></i><span>出勤</span></div></li>
+						<li><div><i class="fa fa-home" aria-hidden="true"></i><span>帰宅</span></div></li>
+						<li><div><i class="fa fa-cutlery" aria-hidden="true"></i><span>夕食</span></div></li>
+						<li><div><i class="img_icon"><img src="img/icon_bath.png" alt="icon_bath"></i><span>お風呂</span></div></li>
+						<li><div><i class="fa fa-coffee" aria-hidden="true"></i><span>くつろぎ</span></div></li>
+						<li><div><i class="fa fa-moon-o" aria-hidden="true"></i><span>就寝</span></div></li>
+					</ul>
+				</div>
+			</div>
+			<div class="params_list">
+				<ul>
+					<li class="app_temp">
+						<div class="param_icon"><i class="fa fa-tachometer" aria-hidden="true"></i></div>
+						<div class="param_tit">エアコン</div>
+						<div class="param_value">28<span class="unit">°C</span></div>
+						<div class="param_data">冷房｜強</div>
+					</li>
+					<li class="app_tv">
+						<div class="param_icon"><i class="fa fa-television" aria-hidden="true"></i></div>
+						<div class="param_tit">テレビ</div>
+						<div class="param_value">5<span class="unit">Ch</span></div>
+						<div class="param_data">14:04 東京地検の男8 #6<br>モズテレビ</div>
+					</li>
+					<li class="app_light">
+						<div class="param_icon"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></div>
+						<div class="param_tit">照明</div>
+						<div class="param_value">7<span class="unit"> / 10</span></div>
+						<div class="param_data">さわやか</div>
+					</li>
+					<li class="app_music">
+						<div class="param_icon"><i class="fa fa-music" aria-hidden="true"></i></div>
+						<div class="param_tit">音楽</div>
+						<div class="param_value"><img src="img/piano_album.png" alt=""></div>
+						<div class="param_data">往年のクラシック10選</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="home_ctrl_chart_side home_vertical_column">
+			<div class="chart_panel chart_temp">
+				<!-- 呉さんにお願いしたいです -->
+			</div>
+			<div class="chart_panel chart_electro_power">
+				<!-- 呉さんにお願いしたいです -->
+			</div>
+		</div>
+	</div>
+	<!-- ホームコントロール詳細 -->
+
+
+
+
+
+
+	<script src="js/app.js"></script>
+</body>
+</html>
