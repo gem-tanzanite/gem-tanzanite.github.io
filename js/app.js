@@ -43,7 +43,7 @@ $(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function () {
 	$(this).addClass("active")
 	//console.log(this)
 })
-$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function () {
+$(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function () {
 	$(this).removeClass("active");
 	//console.log(this.className)
 	if(this.className.indexOf("data_") != -1) {
@@ -92,13 +92,13 @@ $(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_ph
 
 })
 
-$(document).on("touchend", ".close_btn", function () {
+$(document).on("touchend click", ".close_btn", function () {
 	$(".detail_window").removeClass("show")
 	if (location.hash.match(/#id_ctrl|photo/gi)) {
 		//location.hash = ""
 	}
 })
-$(document).on("touchend", ".header_close_btn", function () {
+$(document).on("touchend click", ".header_close_btn", function () {
 	$(".detail_window").removeClass("show")
 	location.hash = ""
 })
