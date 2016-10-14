@@ -1,42 +1,160 @@
-/* DOMの読み込み完了後に処理 */
-if(window.addEventListener) {
-	window.addEventListener( "load" , shareButtonReadSyncer, false );
-}else{
-	window.attachEvent( "onload", shareButtonReadSyncer );
+
+var params_data = {
+	data_1: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, lightcolor: "", lighttype: "さわやか", music_num: 0, music_tit: "朝のジャズ"},
+	data_2: {temp: 28, strong: "中", tv_ch: 4, tv_name: "8:00 モーニング・朝<br>モズテレビ", light: 7, music_num: 1, music_tit: "朝食に聞くクラシック"},
+	data_3: {temp: 28, strong: "中", tv_ch: 5, tv_name: "8:30 おはようジャパン<br>JHK", light: 6, music_num: 2, music_tit: "朝のジャズ"},
+	data_4: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 3, music_tit: "朝のジャズ"},
+	data_5: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 4, music_tit: "朝のジャズ"},
+	data_6: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 5, music_tit: "朝のジャズ"},
+	data_7: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 6, music_tit: "朝のジャズ"},
+	data_8: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 7, music_tit: "朝のジャズ"}
 }
 
-/* シェアボタンを読み込む関数 */
-function shareButtonReadSyncer(){
+var electro_power_data = [
+	{"used_power_num": 365, "comp_num": "+63"},
+	{"used_power_num": 263, "comp_num": "+61"},
+	{"used_power_num": 137, "comp_num": "+20"},
+	{"used_power_num": 75, "comp_num": "+60"},
+	{"used_power_num": 463, "comp_num": "+43"},
+	{"used_power_num": 477, "comp_num": "+23"},
+	{"used_power_num": 400, "comp_num": "+55"},
+	{"used_power_num": 600, "comp_num": "+79"},
+	{"used_power_num": 300, "comp_num": "+145"},
+	{"used_power_num": 422, "comp_num": "+124"},
+	{"used_power_num": 475, "comp_num": "+189"},
+]
 
-// 遅延ロードする場合は次の行と、終わりの方にある行のコメント(//)を外す
-// setTimeout(function(){
+var temps_data = [
+	{"temp": 22, "time": 6},
+	{"temp": 23, "time": 9},
+	{"temp": 25, "time": 12},
+	{"temp": 26, "time": 15},
+	{"temp": 24, "time": 18},
+	{"temp": 24, "time": 21},
+	{"temp": 22, "time": 0},
+	{"temp": 20, "time": 3}
+]
 
-// Facebook
-(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
-	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+var transition_type = "bars";
 
-// Google+
-var scriptTag = document.createElement("script");
-scriptTag.type = "text/javascript"
-scriptTag.src = "https://apis.google.com/js/platform.js";
-scriptTag.async = true;
-document.getElementsByTagName("head")[0].appendChild(scriptTag);
+var slider;
 
-// はてなブックマーク
-var scriptTag = document.createElement("script");
-scriptTag.type = "text/javascript"
-scriptTag.src = "https://b.st-hatena.com/js/bookmark_button.js";
-scriptTag.async = true;
-document.getElementsByTagName("head")[0].appendChild(scriptTag);
+$(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function () {
+	$(this).addClass("active")
+	//console.log(this)
+})
+$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function () {
+	$(this).removeClass("active");
+	//console.log(this.className)
+	if(this.className.indexOf("data_") != -1) {
+		var datanum = $(this).attr("class");
+		$(".app_temp .param_value em").text(params_data[datanum].temp)
+		$(".app_temp .param_data ").text("冷房｜"+params_data[datanum].strong)
+		$(".app_tv .param_value em").text(params_data[datanum].tv_ch)
+		$(".app_tv .param_data em").text(params_data[datanum].tv_name)
+	} else if(this.className.indexOf("touchmonth_li") != -1) {
+		var index_li = Number($(this).attr("id").replace("m", ""));
+		if($(".detail").hasClass("power_detail")) {
+			if(index_li > 9) {
+				$(".tooltip").css({"right": 680 - index_li*61, "left": "auto"})
+			}else{
+				$(".tooltip").css({"left": index_li*61, "right": "auto"})
+			}
+			$(".tooltip .start_month").text(index_li)
+			$(".tooltip .end_month").text(index_li+1)
+			$(".tooltip .used_power_num").text(electro_power_data[index_li-1].used_power_num)
+			$(".tooltip .comp_num").text(electro_power_data[index_li-1].comp_num)
+			$(".touchmonth_li").removeClass("active");
+			$(this).addClass("active");
+		} else if($(".detail").hasClass("temp_detail")) {
+			if(index_li > 9) {
+				$(".tooltip").css({"right": 680 - index_li*79, "left": "auto"})
+			}else{
+				$(".tooltip").css({"left": index_li*79, "right": "auto"})
+			}
+			$(".tooltip .used_power_num").text(temps_data[index_li-1].temp)
+			$(".tooltip .times").text(temps_data[index_li-1].time)
+			$(".touchmonth_li").removeClass("active");
+			$(this).addClass("active");
+		}
+		//console.log(electro_power_data[index_li-1].comp_num)
+	} else if(this.className.indexOf("chart_panel") != -1) {
+		var load_page = (this.className.indexOf("chart_temp") ===-1) ? "./power_detail.html" : "./temp_detail.html"
+		$(".detail_window_load_content").empty().load(load_page, function () {
+			$(".detail_window").addClass("show")
+		})
+	} else if(this.className.indexOf("app_photo") != -1) {
+		$(".detail_window_load_content").empty().load("./photo_viewer.html", function () {
+			$(".detail_window").addClass("show")
+			initSlider()
+		})
+	}
 
-// pocket
-(!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js"));
+})
 
-//},5000);	//ページを開いて5秒後(5,000ミリ秒後)にシェアボタンを読み込む
+$(document).on("touchend", ".close_btn", function () {
+	$(".detail_window").removeClass("show")
+	if (location.hash.match(/#id_ctrl|photo/gi)) {
+		//location.hash = ""
+	}
+})
+$(document).on("touchend", ".header_close_btn", function () {
+	$(".detail_window").removeClass("show")
+	location.hash = ""
+})
 
+/*$(".app_detail")[0].addEventListener("transitionend", function () {
+	var self = this
+	console.log(this)
+	setTimeout(function () {
+		self.style.zIndex = -1;
+	},400)
+}, false)*/
+
+// hashchange
+
+window.addEventListener("hashchange", function (e) {
+	  if (location.hash === "#id_ctrl") {
+	    // home apps launched!
+	    $(".global_header").addClass("hide_close");
+	  } else if(location.hash === "#photo_viewer") {
+	  	// photo_viewer apps launched!
+	    $(".global_header").addClass("hide_close");
+	  } else {
+	  	$(".global_header").removeClass("hide_close");
+	  }
+}, false);
+
+$(document).on("change","#transition_type", function () {
+	transition_type = this.value;
+	console.log(transition_type)
+	//initSlider();
+})
+function initSlider () {
+	slider = new flux.slider('#slider', {
+		autoplay: false,
+		pagination: false
+	});
+	var obj = $('#photo_nav a');
+	obj.click(function (event) {
+		var index = obj.index(this); // 定義順インデックス
+		// インデックス、トランジション（エフェクト）を指定してshowImage呼出し
+		slider.showImage(index, transition_type);
+		event.preventDefault();
+	});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// chart
+

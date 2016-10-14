@@ -2,6 +2,9 @@
 @font-face {
   font-family: 'DIN Light';
   src: url(../fonts/din-light-webfont.ttf); }
+@font-face {
+  font-family: 'Noto';
+  src: url(../fonts/NotoSansCJKJP_demiLight_subset.otf); }
 * {
   box-sizing: border-box; }
 
@@ -9,7 +12,8 @@ body, html {
   height: 100%;
   margin: 0;
   color: #555;
-  font-family: DIN Light, sans-serif; }
+  line-height: 1.6;
+  font-family: DIN Light, Noto, sans-serif; }
   body > section, html > section {
     position: relative;
     padding: 0 0 4rem;
@@ -96,6 +100,8 @@ ul, li, dl, dt, dd {
   box-shadow: 0 2px 2px #333; }
   .global_header > * {
     flex: 1 0 auto; }
+  .global_header > * {
+    transition: .2s; }
   .global_header .timer {
     vertical-align: middle; }
     .global_header .timer time {
@@ -114,6 +120,16 @@ ul, li, dl, dt, dd {
     .global_header .etc > * {
       display: inline-block;
       margin-left: 1rem; }
+  .global_header .header_close_btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none; }
+  .global_header.hide_close .timer, .global_header.hide_close .etc {
+    opacity: 0;
+    visibility: hidden; }
+  .global_header.hide_close .header_close_btn {
+    display: block; }
 
 main {
   padding: 20px 10px;
@@ -135,6 +151,20 @@ main {
   height: 100%;
   margin: 0 10px; }
 
+.chart_panel {
+  transition: .2s; }
+  .chart_panel.active {
+    transform: scale(0.9);
+    opacity: .8; }
+
+.chart_temp {
+  background: url(../img/thumb_tenp.jpg) center no-repeat;
+  background-size: cover; }
+
+.chart_electro_power {
+  background: url(../img/thumb_power.jpg) center no-repeat;
+  background-size: cover; }
+
 .app_home {
   width: 700px;
   background-image: linear-gradient(-180deg, #353A6B 0%, #181B39 100%);
@@ -146,23 +176,18 @@ main {
   .app_home > * {
     flex: 1 0 auto; }
   .app_home .tit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
     text-decoration: none;
+    margin-top: 40px;
     text-align: center; }
-    .app_home .tit > * {
-      flex: 1 0 auto; }
-    .app_home .tit .tit_inner {
-      flex: 1 0 auto; }
     .app_home .tit .fa {
-      font-size: 300%;
+      font-size: 200%;
       text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
     .app_home .tit p {
       font-size: 240%;
-      margin: .9rem 0 0;
-      text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
+      margin: .1rem 0 0;
+      text-shadow: 0 2px 10px #000, 0 2px 2px #000;
+      line-height: 1; }
   .app_home .params_list {
     padding: .8rem;
     display: flex;
@@ -192,11 +217,10 @@ main {
       font-size: 240%;
       text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
   .app_home .param_tit {
-    font-size: 90%;
-    margin-bottom: 15px;
+    font-size: 16px;
     text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
   .app_home .param_value {
-    font-size: 280%;
+    font-size: 240%;
     min-height: 60px;
     text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
     .app_home .param_value .unit {
@@ -206,12 +230,16 @@ main {
       position: relative;
       top: -5px; }
   .app_home .param_data {
-    font-size: 70%; }
+    font-size: 12px; }
 
 .app_photo {
   background: url(../img/children.jpg) center no-repeat;
   background-size: cover;
   position: relative; }
+  .app_photo a {
+    display: block;
+    width: 100%;
+    height: 100%; }
   .app_photo .tit {
     color: white;
     position: absolute;
@@ -220,30 +248,33 @@ main {
     .app_photo .tit span {
       font-size: 70%; }
 
+.app_map {
+  background: url(../img/thumb_map.png) center no-repeat;
+  background-size: cover; }
+
 /*
 
 app detail
 */
 #id_ctrl:target {
-  z-index: 1;
   opacity: 1;
-  transform: scale(1); }
+  transform: scale(1);
+  transition: .2s; }
 
 .app_detail {
   width: 100%;
-  height: 100%;
+  height: 420px;
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 0; }
   .app_detail.app_home {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     flex-direction: row;
-    z-index: -1;
     opacity: 0;
     position: absolute;
-    transform: scale(0.9);
+    transform: scale(0);
     transition: .2s; }
     .app_detail.app_home > * {
       flex: 1 0 auto; }
@@ -259,7 +290,7 @@ app detail
     .app_detail.app_home .home_ctrl_main_side {
       width: 65%; }
       .app_detail.app_home .home_ctrl_main_side .tit {
-        height: 50%; }
+        margin-top: 0; }
       .app_detail.app_home .home_ctrl_main_side .tit_inner {
         height: 100%;
         display: flex;
@@ -278,7 +309,8 @@ app detail
       justify-content: space-between;
       align-items: stretch;
       flex-wrap: wrap;
-      background-color: #fff; }
+      background-color: #fff;
+      height: 190px; }
       .app_detail.app_home .ctrl_btns > * {
         flex: 1 0 auto; }
       .app_detail.app_home .ctrl_btns li {
@@ -287,9 +319,9 @@ app detail
         align-items: center;
         border-right: 1px solid #525252;
         width: 25%;
-        padding: 1.4rem 0;
         color: #525252;
-        line-height: 1; }
+        line-height: 1;
+        transition: .2s; }
         .app_detail.app_home .ctrl_btns li > * {
           flex: 1 0 auto; }
         .app_detail.app_home .ctrl_btns li:nth-child(-n+4) {
@@ -309,23 +341,226 @@ app detail
           color: #20264A; }
         .app_detail.app_home .ctrl_btns li .img_icon img {
           width: 40px; }
+        .app_detail.app_home .ctrl_btns li.active {
+          background-color: #20264A;
+          transform: scale(0.95); }
+          .app_detail.app_home .ctrl_btns li.active .fa, .app_detail.app_home .ctrl_btns li.active span {
+            color: white; }
     .app_detail.app_home .params_list {
       flex: 1 0 0; }
       .app_detail.app_home .params_list ul {
         height: 100%; }
         .app_detail.app_home .params_list ul li {
-          padding: 2rem 0;
           display: flex;
           justify-content: space-between;
           align-items: stretch;
           flex-direction: column; }
           .app_detail.app_home .params_list ul li > * {
             flex: 1 0 auto; }
+          .app_detail.app_home .params_list ul li em {
+            font-style: normal; }
     .app_detail.app_home .chart_panel {
       background-color: #fff;
       border-radius: 4px;
       height: calc(50% - 0.4rem);
       flex: none; }
+
+.detail {
+  width: 800px;
+  height: 480px; }
+
+.legend_bar > div {
+  color: white; }
+  .legend_bar > div span {
+    background-color: #F5A623;
+    width: 20px;
+    height: 4px;
+    display: inline-block;
+    margin-right: 4px;
+    position: relative;
+    top: -4px; }
+.legend_bar .last_year span {
+  background-color: #999; }
+
+.detail_tit {
+  font-size: 60px;
+  font-weight: bold;
+  color: #F5A623;
+  text-align: center; }
+  .detail_tit span {
+    font-size: 34px; }
+
+.temp_detail {
+  position: relative; }
+  .temp_detail .detail_header {
+    display: block;
+    padding-bottom: 0px;
+    padding-top: 50px; }
+  .temp_detail .detail_tit {
+    font-size: 40px;
+    color: #fff;
+    text-align: center; }
+  .temp_detail .close_btn {
+    position: absolute;
+    right: 20px;
+    top: 36px;
+    z-index: 2; }
+
+.close_btn {
+  color: white;
+  text-align: right; }
+  .close_btn .fa {
+    font-size: 26px; }
+
+.detail_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 30px 60px; }
+  .detail_header > * {
+    flex: 1 0 auto; }
+
+.detail .chart_area {
+  padding: 0 0px;
+  position: relative; }
+  .detail .chart_area .chart_area_content {
+    overflow: hidden;
+    width: 680px;
+    height: 250px;
+    margin-left: 60px;
+    position: relative;
+    animation: show_chart_animation .8s .1s; }
+
+.temp_detail {
+  background-image: linear-gradient(#006A92, #003959); }
+  .temp_detail .chart_area .chart_area_content {
+    background: url(../img/tempchart_detail_line.png) left top no-repeat;
+    background-size: 680px 248px; }
+
+.power_detail {
+  background-image: linear-gradient(#921F00, #592200); }
+  .power_detail .chart_area .chart_area_content {
+    background: url(../img/powerchart_detail_line.png) left top no-repeat;
+    background-size: 680px 248px; }
+
+@keyframes show_chart_animation {
+  0% {
+    width: 0; }
+  100% {
+    width: 680px; } }
+.tooltip {
+  position: absolute;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 1rem;
+  top: 0;
+  left: 40px;
+  font-size: 18px;
+  transition: .2s; }
+  .tooltip span {
+    display: inline-block; }
+
+.touch12monthes {
+  position: absolute;
+  top: 0;
+  left: 65px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; }
+  .touch12monthes li {
+    float: left;
+    opacity: 0;
+    transition: .6s;
+    width: 61px;
+    height: 90%;
+    background: url(../img/touchoverlay.png) center bottom no-repeat;
+    background-size: 61px 100%;
+    transform: scale(1, 0.9);
+    transform-origin: bottom center; }
+    .touch12monthes li.active {
+      opacity: 1;
+      transform: scale(1, 1); }
+
+.temp_detail .touch12monthes {
+  left: 82px; }
+  .temp_detail .touch12monthes li {
+    width: 79px;
+    background-size: 100% 100%; }
+
+.detail_window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  opacity: 0;
+  transition: .5s .2s;
+  transform: scale(0.8); }
+  .detail_window.show {
+    z-index: 10;
+    opacity: 1;
+    transform: scale(1); }
+
+.temp_info {
+  color: white;
+  font-size: 55px;
+  text-align: center;
+  padding-top: 10px; }
+  .temp_info span {
+    font-size: 40px; }
+  .temp_info img {
+    width: 30px;
+    height: auto;
+    vertical-align: top; }
+
+.photo_detail {
+  background-color: #000; }
+  .photo_detail .detail_header {
+    padding: 10px; }
+    .photo_detail .detail_header select {
+      width: 100px;
+      font-size: 14px;
+      font-family: DIN Light, sans-serif;
+      padding: 6px 12px;
+      -moz-appearance: none;
+      appearance: none;
+      border: 1px solid #404040;
+      background-color: #000;
+      border-radius: 4px;
+      color: white;
+      position: relative; }
+      .photo_detail .detail_header select::after {
+        content: "aaa";
+        color: white;
+        position: absolute;
+        right: 5px;
+        top: 2px; }
+  .photo_detail .header_close_btn {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 4px; }
+  .photo_detail .slider_wrapper {
+    overflow: hidden; }
+
+#slider {
+  width: 480px;
+  height: 480px;
+  float: left; }
+
+#photo_nav {
+  width: 320px;
+  height: 480px;
+  float: right;
+  padding: 0 0 0 6px; }
+  #photo_nav a {
+    display: block;
+    margin: 1px;
+    float: left; }
+    #photo_nav a img {
+      width: 100px;
+      height: 100px; }
 
 /* デスクトップPCではLINEボタンを表示しない */
 @media screen and (min-width: 480px) {
