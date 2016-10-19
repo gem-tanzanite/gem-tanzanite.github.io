@@ -38,14 +38,26 @@ var temps_data = [
 var transition_type = "bars";
 
 var slider;
+var startX = 0;
+var THRESHOLD = 20;
 
-$(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function () {
+$(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function (e) {
 	$(this).addClass("active")
+	if (e.changedTouches) {
+		startX = e.changedTouches[0].pageX;
+	}
 	//console.log(this)
 })
-$(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function () {
+$(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
 	$(this).removeClass("active");
-	//console.log(this.className)
+	//console.log(this.className);
+	if (e.changedTouches) {
+		var moveX = Math.abs(e.changedTouches[0].pageX - startX);
+		startX = 0;
+		if (moveX > THRESHOLD) {
+		 return;
+		}
+	}
 	if(this.className.indexOf("data_") != -1) {
 		var datanum = $(this).attr("class");
 		$(".app_temp .param_value em").text(params_data[datanum].temp)
@@ -157,4 +169,3 @@ function initSlider () {
 
 
 // chart
-
