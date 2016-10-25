@@ -113,6 +113,7 @@ $(document).on("touchend click", ".close_btn", function () {
 $(document).on("touchend click", ".header_close_btn", function () {
 	$(".detail_window").removeClass("show")
 	location.hash = ""
+  $(".global_header").removeClass("hide_close");
 })
 
 /*$(".app_detail")[0].addEventListener("transitionend", function () {
@@ -124,7 +125,7 @@ $(document).on("touchend click", ".header_close_btn", function () {
 }, false)*/
 
 // hashchange
-
+/*
 window.addEventListener("hashchange", function (e) {
 	  if (location.hash === "#id_ctrl") {
 	    // home apps launched!
@@ -136,6 +137,14 @@ window.addEventListener("hashchange", function (e) {
 	  	$(".global_header").removeClass("hide_close");
 	  }
 }, false);
+*/
+$('#anchor_id_ctrl').on("touchend click", function(e) {
+	$('.global_header').addClass('hide_close');
+	location.hash = "#id_ctrl";
+});
+$('#photo_viewer').on("touchend click", function(e) {
+	$('.global_header').addClass('hide_close');
+});
 
 $(document).on("change","#transition_type", function () {
 	transition_type = this.value;
@@ -147,8 +156,8 @@ function initSlider () {
 		autoplay: false,
 		pagination: false
 	});
-	var obj = $('#photo_nav a');
-	obj.click(function (event) {
+	var obj = $('#photo_nav div.img');
+	obj.on('touchend', function (event) {
 		var index = obj.index(this); // 定義順インデックス
 		// インデックス、トランジション（エフェクト）を指定してshowImage呼出し
 		slider.showImage(index, transition_type);
