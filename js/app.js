@@ -41,14 +41,14 @@ var slider;
 var startX = 0;
 var THRESHOLD = 20;
 
-$(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function (e) {
+$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
 	$(this).addClass("active")
 	if (e.changedTouches) {
 		startX = e.changedTouches[0].pageX;
 	}
 	//console.log(this)
 })
-$(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
+$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
 	$(this).removeClass("active");
 	//console.log(this.className);
 	if (e.changedTouches) {
@@ -104,15 +104,16 @@ $(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .
 
 })
 
-$(document).on("touchend click", ".close_btn", function () {
+$(document).on("touchend", ".close_btn", function () {
 	$(".detail_window").removeClass("show")
 	if (location.hash.match(/#id_ctrl|photo/gi)) {
 		//location.hash = ""
 	}
 })
-$(document).on("touchend click", ".header_close_btn", function () {
+$(document).on("touchend", ".header_close_btn", function () {
 	$(".detail_window").removeClass("show")
 	location.hash = ""
+  $(".global_header").removeClass("hide_close");
 })
 
 /*$(".app_detail")[0].addEventListener("transitionend", function () {
@@ -124,7 +125,7 @@ $(document).on("touchend click", ".header_close_btn", function () {
 }, false)*/
 
 // hashchange
-
+/*
 window.addEventListener("hashchange", function (e) {
 	  if (location.hash === "#id_ctrl") {
 	    // home apps launched!
@@ -136,6 +137,11 @@ window.addEventListener("hashchange", function (e) {
 	  	$(".global_header").removeClass("hide_close");
 	  }
 }, false);
+*/
+$('#anchor_id_ctrl').on("touchend", function() {
+	$('.global_header').addClass('hide_close');
+	location.hash = "#id_ctrl";
+});
 
 $(document).on("change","#transition_type", function () {
 	transition_type = this.value;
@@ -147,8 +153,8 @@ function initSlider () {
 		autoplay: false,
 		pagination: false
 	});
-	var obj = $('#photo_nav a');
-	obj.click(function (event) {
+	var obj = $('#photo_nav div.img');
+	obj.on('touchend', function (event) {
 		var index = obj.index(this); // 定義順インデックス
 		// インデックス、トランジション（エフェクト）を指定してshowImage呼出し
 		slider.showImage(index, transition_type);

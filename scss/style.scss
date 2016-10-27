@@ -264,7 +264,7 @@ main {
 	background: url(../img/children.jpg) center no-repeat;
 	background-size: cover;
 	position: relative;
-	a {
+	#photo_viewer {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -385,7 +385,7 @@ app detail
 					.fa, span {
 						color: white;
 					}
-					
+
 				}
 			}
 		}
@@ -414,7 +414,7 @@ app detail
 	}
 }
 
-// detail 
+// detail
 
 .detail {
 	width: 800px;
@@ -652,7 +652,7 @@ app detail
 	height: 480px;
 	float: right;
 	padding: 0 0 0 6px;
-	a {
+	div {
 		display: block;
 		margin: 1px;
 		float: left;
@@ -673,4 +673,3 @@ app detail
 
 
 @import "wu";
-
