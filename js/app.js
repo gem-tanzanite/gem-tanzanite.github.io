@@ -162,16 +162,19 @@ function initSlider () {
 	});
 }
 
-
-
-
-
-
-
-
-
-
-
-
+var init_pos = 0;
+$('main').on('touchstart', function(e) {
+	if (e.changedTouches) {
+		init_pos = e.changedTouches[0].pageX + $('main').scrollLeft();
+	}
+});
+$('main').on('touchmove', function(e) {
+	if (e.changedTouches) {
+		$('main').scrollLeft(init_pos - e.changedTouches[0].pageX);
+	}
+});
+$('main').on('touchend', function() {
+	//do nothing
+});
 
 // chart
