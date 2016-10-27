@@ -41,14 +41,14 @@ var slider;
 var startX = 0;
 var THRESHOLD = 20;
 
-$(".ctrl_btns li, .touchmonth_li, .chart_panel").on("touchstart", function (e) {
+$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
 	$(this).addClass("active")
 	if (e.changedTouches) {
 		startX = e.changedTouches[0].pageX;
 	}
 	//console.log(this)
 })
-$(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
+$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
 	$(this).removeClass("active");
 	//console.log(this.className);
 	if (e.changedTouches) {
@@ -104,13 +104,13 @@ $(document).on("touchend click", ".ctrl_btns li, .touchmonth_li, .chart_panel, .
 
 })
 
-$(document).on("touchend click", ".close_btn", function () {
+$(document).on("touchend", ".close_btn", function () {
 	$(".detail_window").removeClass("show")
 	if (location.hash.match(/#id_ctrl|photo/gi)) {
 		//location.hash = ""
 	}
 })
-$(document).on("touchend click", ".header_close_btn", function () {
+$(document).on("touchend", ".header_close_btn", function () {
 	$(".detail_window").removeClass("show")
 	location.hash = ""
   $(".global_header").removeClass("hide_close");
@@ -138,12 +138,9 @@ window.addEventListener("hashchange", function (e) {
 	  }
 }, false);
 */
-$('#anchor_id_ctrl').on("touchend click", function(e) {
+$('#anchor_id_ctrl').on("touchend", function() {
 	$('.global_header').addClass('hide_close');
 	location.hash = "#id_ctrl";
-});
-$('#photo_viewer').on("touchend click", function(e) {
-	$('.global_header').addClass('hide_close');
 });
 
 $(document).on("change","#transition_type", function () {
