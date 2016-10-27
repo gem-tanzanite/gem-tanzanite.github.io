@@ -163,21 +163,17 @@ function initSlider () {
 }
 
 var init_pos = 0;
-$('main').on('touchstart mousedown', function(e) {
+$('main').on('touchstart', function(e) {
 	if (e.changedTouches) {
 		init_pos = e.changedTouches[0].pageX + $('main').scrollLeft();
-	} else {
-		init_pos = e.pageX + $('main').scrollLeft();
 	}
 });
-$('main').on('touchmove mousemove', function(e) {
+$('main').on('touchmove', function(e) {
 	if (e.changedTouches) {
 		$('main').scrollLeft(init_pos - e.changedTouches[0].pageX);
-	} else {
-		$('main').scrollLeft(init_pos - e.pageX);
 	}
 });
-$('main').on('touchend mouseup', function() {
+$('main').on('touchend', function() {
 	//do nothing
 });
 
