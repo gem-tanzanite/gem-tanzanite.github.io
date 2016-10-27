@@ -8,7 +8,7 @@ var params_data = {
 	data_6: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 5, music_tit: "朝のジャズ"},
 	data_7: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 6, music_tit: "朝のジャズ"},
 	data_8: {temp: 27, strong: "強", tv_ch: 1, tv_name: "7:00 おはようジャパン<br>JHK", light: 6, music_num: 7, music_tit: "朝のジャズ"}
-}
+};
 
 var electro_power_data = [
 	{"used_power_num": 365, "comp_num": "+63"},
@@ -22,7 +22,7 @@ var electro_power_data = [
 	{"used_power_num": 300, "comp_num": "+145"},
 	{"used_power_num": 422, "comp_num": "+124"},
 	{"used_power_num": 475, "comp_num": "+189"},
-]
+];
 
 var temps_data = [
 	{"temp": 22, "time": 6},
@@ -33,7 +33,7 @@ var temps_data = [
 	{"temp": 24, "time": 21},
 	{"temp": 22, "time": 0},
 	{"temp": 20, "time": 3}
-]
+];
 
 var transition_type = "bars";
 
@@ -41,113 +41,7 @@ var slider;
 var startX = 0;
 var THRESHOLD = 20;
 
-$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
-	$(this).addClass("active")
-	if (e.changedTouches) {
-		startX = e.changedTouches[0].pageX;
-	}
-	//console.log(this)
-})
-$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
-	$(this).removeClass("active");
-	//console.log(this.className);
-	if (e.changedTouches) {
-		var moveX = Math.abs(e.changedTouches[0].pageX - startX);
-		startX = 0;
-		if (moveX > THRESHOLD) {
-		 return;
-		}
-	}
-	if(this.className.indexOf("data_") != -1) {
-		var datanum = $(this).attr("class");
-		$(".app_temp .param_value em").text(params_data[datanum].temp)
-		$(".app_temp .param_data ").text("冷房｜"+params_data[datanum].strong)
-		$(".app_tv .param_value em").text(params_data[datanum].tv_ch)
-		$(".app_tv .param_data em").text(params_data[datanum].tv_name)
-	} else if(this.className.indexOf("touchmonth_li") != -1) {
-		var index_li = Number($(this).attr("id").replace("m", ""));
-		if($(".detail").hasClass("power_detail")) {
-			if(index_li > 9) {
-				$(".tooltip").css({"right": 680 - index_li*61, "left": "auto"})
-			}else{
-				$(".tooltip").css({"left": index_li*61, "right": "auto"})
-			}
-			$(".tooltip .start_month").text(index_li)
-			$(".tooltip .end_month").text(index_li+1)
-			$(".tooltip .used_power_num").text(electro_power_data[index_li-1].used_power_num)
-			$(".tooltip .comp_num").text(electro_power_data[index_li-1].comp_num)
-			$(".touchmonth_li").removeClass("active");
-			$(this).addClass("active");
-		} else if($(".detail").hasClass("temp_detail")) {
-			if(index_li > 9) {
-				$(".tooltip").css({"right": 680 - index_li*79, "left": "auto"})
-			}else{
-				$(".tooltip").css({"left": index_li*79, "right": "auto"})
-			}
-			$(".tooltip .used_power_num").text(temps_data[index_li-1].temp)
-			$(".tooltip .times").text(temps_data[index_li-1].time)
-			$(".touchmonth_li").removeClass("active");
-			$(this).addClass("active");
-		}
-		//console.log(electro_power_data[index_li-1].comp_num)
-	} else if(this.className.indexOf("chart_panel") != -1) {
-		var load_page = (this.className.indexOf("chart_temp") ===-1) ? "./power_detail.html" : "./temp_detail.html"
-		$(".detail_window_load_content").empty().load(load_page, function () {
-			$(".detail_window").addClass("show")
-		})
-	} else if(this.className.indexOf("app_photo") != -1) {
-		$(".detail_window_load_content").empty().load("./photo_viewer.html", function () {
-			$(".detail_window").addClass("show")
-			initSlider()
-		})
-	}
 
-})
-
-$(document).on("touchend", ".close_btn", function () {
-	$(".detail_window").removeClass("show")
-	if (location.hash.match(/#id_ctrl|photo/gi)) {
-		//location.hash = ""
-	}
-})
-$(document).on("touchend", ".header_close_btn", function () {
-	$(".detail_window").removeClass("show")
-	location.hash = ""
-  $(".global_header").removeClass("hide_close");
-})
-
-/*$(".app_detail")[0].addEventListener("transitionend", function () {
-	var self = this
-	console.log(this)
-	setTimeout(function () {
-		self.style.zIndex = -1;
-	},400)
-}, false)*/
-
-// hashchange
-/*
-window.addEventListener("hashchange", function (e) {
-	  if (location.hash === "#id_ctrl") {
-	    // home apps launched!
-	    $(".global_header").addClass("hide_close");
-	  } else if(location.hash === "#photo_viewer") {
-	  	// photo_viewer apps launched!
-	    $(".global_header").addClass("hide_close");
-	  } else {
-	  	$(".global_header").removeClass("hide_close");
-	  }
-}, false);
-*/
-$('#anchor_id_ctrl').on("touchend", function() {
-	$('.global_header').addClass('hide_close');
-	location.hash = "#id_ctrl";
-});
-
-$(document).on("change","#transition_type", function () {
-	transition_type = this.value;
-	console.log(transition_type)
-	//initSlider();
-})
 function initSlider () {
 	slider = new flux.slider('#slider', {
 		autoplay: false,
@@ -161,6 +55,91 @@ function initSlider () {
 		event.preventDefault();
 	});
 }
+
+$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
+	$(this).addClass("active");
+	if (e.changedTouches) {
+		startX = e.changedTouches[0].pageX;
+	}
+	//console.log(this)
+});
+
+$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
+	$(this).removeClass("active");
+	//console.log(this.className);
+	if (e.changedTouches) {
+		var moveX = Math.abs(e.changedTouches[0].pageX - startX);
+		startX = 0;
+		if (moveX > THRESHOLD) {
+		 return;
+		}
+	}
+	if(this.className.indexOf("data_") !== -1) {
+		var datanum = $(this).attr("class");
+		$(".app_temp .param_value em").text(params_data[datanum].temp);
+		$(".app_temp .param_data ").text("冷房｜"+params_data[datanum].strong);
+		$(".app_tv .param_value em").text(params_data[datanum].tv_ch);
+		$(".app_tv .param_data em").text(params_data[datanum].tv_name);
+	} else if(this.className.indexOf("touchmonth_li") !== -1) {
+		var index_li = Number($(this).attr("id").replace("m", ""));
+		if($(".detail").hasClass("power_detail")) {
+			if(index_li > 9) {
+				$(".tooltip").css({"right": 680 - index_li*61, "left": "auto"});
+			}else{
+				$(".tooltip").css({"left": index_li*61, "right": "auto"});
+			}
+			$(".tooltip .start_month").text(index_li);
+			$(".tooltip .end_month").text(index_li+1);
+			$(".tooltip .used_power_num").text(electro_power_data[index_li-1].used_power_num);
+			$(".tooltip .comp_num").text(electro_power_data[index_li-1].comp_num);
+			$(".touchmonth_li").removeClass("active");
+			$(this).addClass("active");
+		} else if($(".detail").hasClass("temp_detail")) {
+			if(index_li > 9) {
+				$(".tooltip").css({"right": 680 - index_li*79, "left": "auto"});
+			} else {
+				$(".tooltip").css({"left": index_li*79, "right": "auto"});
+			}
+			$(".tooltip .used_power_num").text(temps_data[index_li-1].temp);
+			$(".tooltip .times").text(temps_data[index_li-1].time);
+			$(".touchmonth_li").removeClass("active");
+			$(this).addClass("active");
+		}
+		//console.log(electro_power_data[index_li-1].comp_num)
+	} else if(this.className.indexOf("chart_panel") !== -1) {
+		var load_page = (this.className.indexOf("chart_temp") === -1) ? "./power_detail.html" : "./temp_detail.html";
+		$(".detail_window_load_content").empty().load(load_page, function () {
+			$(".detail_window").addClass("show");
+		});
+	} else if(this.className.indexOf("app_photo") !== -1) {
+		$(".detail_window_load_content").empty().load("./photo_viewer.html", function () {
+			$(".detail_window").addClass("show");
+			initSlider();
+		});
+	}
+});
+
+$(document).on("touchend", ".close_btn", function () {
+	$(".detail_window").removeClass("show");
+	if (location.hash.match(/#id_ctrl|photo/gi)) {
+		//location.hash = ""
+	}
+});
+$(document).on("touchend", ".header_close_btn", function () {
+	$(".detail_window").removeClass("show");
+	location.hash = '';
+  $(".global_header").removeClass("hide_close");
+});
+
+$('#anchor_id_ctrl').on("touchend", function() {
+	$('.global_header').addClass('hide_close');
+	location.hash = "#id_ctrl";
+});
+
+$(document).on("change","#transition_type", function () {
+	transition_type = this.value;
+	//initSlider();
+});
 
 var init_pos = 0;
 $('main').on('touchstart', function(e) {
