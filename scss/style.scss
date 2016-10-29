@@ -611,7 +611,7 @@ app detail
 .photo_detail {
 	.detail_header {
 		padding: 10px;
-		select {
+		#transition_selection {
 			width: 100px;
 			font-size: 14px;
 			font-family: DIN Light, sans-serif;
@@ -624,7 +624,7 @@ app detail
 			color: white;
 			position: relative;
 			&::after {
-				content: "aaa";
+				content: " ";
 				color: white;
 				position: absolute;
 				right: 5px;

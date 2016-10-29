@@ -35,7 +35,24 @@ var temps_data = [
 	{"temp": 20, "time": 3}
 ];
 
+var transition_types = [
+	'bars',
+	'blinds',
+	'blocks',
+	'blocks2',
+	'concentric',
+	'slide',
+	'warp',
+	'zip',
+	'bars3d',
+	'blinds3d',
+	'cube',
+	'tiles3d',
+	'turn'
+];
+
 var transition_type = "bars";
+var transtion_type_index = 0;
 
 var slider;
 var startX = 0;
@@ -54,6 +71,24 @@ function initSlider () {
 		slider.showImage(index, transition_type);
 		event.preventDefault();
 	});
+
+	var select = $('#transition_type');
+	select.on('touchend', function() {
+		var evt = document.createEvent('MouseEvents');
+		evt.initEvent('mousedown', false, true);
+		document.getElementById('transition_type').dispatchEvent(evt);
+	});
+
+	$('#transition_selection').on('touchend', function() {
+		if (transtion_type_index < transition_types.length -1) {
+			transtion_type_index += 1;
+		} else {
+			transtion_type_index = 0;
+		}
+		transition_type = transition_types[transtion_type_index];
+		$('#transition_selection').text(transition_type);
+	});
+
 }
 
 $(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
@@ -155,5 +190,6 @@ $('main').on('touchmove', function(e) {
 $('main').on('touchend', function() {
 	//do nothing
 });
+
 
 // chart

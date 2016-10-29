@@ -519,7 +519,7 @@ app detail
   background-color: #000; }
   .photo_detail .detail_header {
     padding: 10px; }
-    .photo_detail .detail_header select {
+    .photo_detail .detail_header #transition_selection {
       width: 100px;
       font-size: 14px;
       font-family: DIN Light, sans-serif;
@@ -531,8 +531,8 @@ app detail
       border-radius: 4px;
       color: white;
       position: relative; }
-      .photo_detail .detail_header select::after {
-        content: "aaa";
+      .photo_detail .detail_header #transition_selection::after {
+        content: " ";
         color: white;
         position: absolute;
         right: 5px;
