@@ -72,13 +72,6 @@ function initSlider () {
 		event.preventDefault();
 	});
 
-	var select = $('#transition_type');
-	select.on('touchend', function() {
-		var evt = document.createEvent('MouseEvents');
-		evt.initEvent('mousedown', false, true);
-		document.getElementById('transition_type').dispatchEvent(evt);
-	});
-
 	$('#transition_selection').on('touchend', function() {
 		if (transtion_type_index < transition_types.length -1) {
 			transtion_type_index += 1;
