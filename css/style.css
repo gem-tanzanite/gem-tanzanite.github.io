@@ -124,7 +124,8 @@ ul, li, dl, dt, dd {
   .global_header .header_close_btn {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 10px;
+    font-size: 26px;
     display: none; }
   .global_header.hide_close .timer, .global_header.hide_close .etc {
     opacity: 0;
