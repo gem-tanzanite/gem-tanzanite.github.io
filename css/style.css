@@ -123,7 +123,7 @@ ul, li, dl, dt, dd {
       margin-left: 1rem; }
   .global_header .header_close_btn {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 10px;
     font-size: 26px;
     display: none; }
