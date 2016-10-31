@@ -137,8 +137,9 @@ ul, li, dl, dt, dd {
 	}
 	.header_close_btn {
 		position: absolute;
-		right: 20px;
-		top: 20px;
+		right: 10px;
+		top: 10px;
+		font-size: 26px;
 		display: none;
 	}
 	&.hide_close {
