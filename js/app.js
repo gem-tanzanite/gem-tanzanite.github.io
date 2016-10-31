@@ -36,6 +36,7 @@ var temps_data = [
 ];
 
 var transition_types = [
+	'random',
 	'bars',
 	'blinds',
 	'blocks',
@@ -51,7 +52,7 @@ var transition_types = [
 	'turn'
 ];
 
-var transition_type = "bars";
+var transition_type = "random";
 var transtion_type_index = 0;
 
 var slider;
@@ -68,10 +69,11 @@ function initSlider () {
 	obj.on('touchend', function (event) {
 		var index = obj.index(this); // 定義順インデックス
 		// インデックス、トランジション（エフェクト）を指定してshowImage呼出し
-		slider.showImage(index, transition_type);
+		slider.showImage(index, transition_type === 'random' ? undefined : transition_type);
 		event.preventDefault();
 	});
 
+	$('#transition_selection').text(transition_types[transtion_type_index]);
 	$('#transition_selection').on('touchend', function() {
 		if (transtion_type_index < transition_types.length -1) {
 			transtion_type_index += 1;
