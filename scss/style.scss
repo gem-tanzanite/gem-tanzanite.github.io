@@ -10,6 +10,7 @@ body, html {
 	color: #555;
 	line-height: 1.6;
 	font-family: DIN Light, Noto, sans-serif;
+	overflow: hidden;
 	&>section {
 		position: relative;
 		padding: 0 0 4rem ;
@@ -154,7 +155,7 @@ ul, li, dl, dt, dd {
 main {
 	padding: 20px 10px;
 	width: 100%;
-	overflow: auto;
+	overflow: hidden;
 	height: calc(100% - #{$header_height});
 	@include fb();
 }

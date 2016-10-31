@@ -13,7 +13,8 @@ body, html {
   margin: 0;
   color: #555;
   line-height: 1.6;
-  font-family: DIN Light, Noto, sans-serif; }
+  font-family: DIN Light, Noto, sans-serif;
+  overflow: hidden; }
   body > section, html > section {
     position: relative;
     padding: 0 0 4rem;
@@ -134,7 +135,7 @@ ul, li, dl, dt, dd {
 main {
   padding: 20px 10px;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
   height: calc(100% - 60px);
   display: flex;
   justify-content: space-between;
