@@ -159,9 +159,22 @@ $(document).on("touchend", ".header_close_btn", function () {
   $(".global_header").removeClass("hide_close");
 });
 
-$('#anchor_id_ctrl').on("touchend", function() {
-	$('.global_header').addClass('hide_close');
-	location.hash = "#id_ctrl";
+$('#anchor_id_ctrl').on("touchstart", function(e) {
+	if (e.changedTouches) {
+		startX = e.changedTouches[0].pageX;
+	}
+});
+
+$('#anchor_id_ctrl').on("touchend", function(e) {
+	if (e.changedTouches) {
+		var moveX = Math.abs(e.changedTouches[0].pageX - startX);
+		startX = 0;
+		if (moveX > THRESHOLD) {
+		 return;
+		}
+		$('.global_header').addClass('hide_close');
+		location.hash = "#id_ctrl";
+	}
 });
 
 $(document).on("change","#transition_type", function () {
