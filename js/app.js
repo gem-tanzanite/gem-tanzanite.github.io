@@ -200,4 +200,21 @@ $('main').on('touchend', function() {
 });
 
 
+function updateTime() {
+	var date = new Date();
+	var hour = date.getHours();
+	if (hour > 11) {
+		$('#meridian').text('PM');
+		hour -= 11;
+	} else {
+		$('#meridian').text('AM');
+	}
+	$('time').text(hour + ':' + date.getMinutes());
+}
+
+$(function() {
+	updateTime();
+	setInterval(updateTime, 1000);
+});
+
 // chart
