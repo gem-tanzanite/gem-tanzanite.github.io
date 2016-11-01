@@ -203,13 +203,16 @@ $('main').on('touchend', function() {
 function updateTime() {
 	var date = new Date();
 	var hour = date.getHours();
+	var minute = date.getMinutes();
 	if (hour > 11) {
 		$('#meridian').text('PM');
-		hour -= 11;
+		hour -= 12;
 	} else {
 		$('#meridian').text('AM');
 	}
-	$('time').text(hour + ':' + date.getMinutes());
+
+	var timeString = hour + ':' + (minute < 10 ? "0" : "") + minute;
+	$('time').text(timeString);
 }
 
 $(function() {
