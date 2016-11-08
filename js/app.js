@@ -186,12 +186,12 @@ $(document).on("change","#transition_type", function () {
 
 var init_pos = 0;
 $('main').on('touchstart', function(e) {
-	if (e.changedTouches) {
+	if (e.changedTouches && e.changedTouches.length === 1) {
 		init_pos = e.changedTouches[0].pageX + $('main').scrollLeft();
 	}
 });
 $('main').on('touchmove', function(e) {
-	if (e.changedTouches) {
+	if (e.changedTouches && e.changedTouches.length === 1) {
 		$('main').scrollLeft(init_pos - e.changedTouches[0].pageX);
 	}
 });
