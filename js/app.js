@@ -86,7 +86,7 @@ function initSlider () {
 
 }
 
-$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", function (e) {
+$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video").on("touchstart", function (e) {
 	$(this).addClass("active");
 	if (e.changedTouches) {
 		startX = e.changedTouches[0].pageX;
@@ -94,7 +94,7 @@ $(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo").on("touchstart", fu
 	//console.log(this)
 });
 
-$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo", function (e) {
+$(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video", function (e) {
 	$(this).removeClass("active");
 	//console.log(this.className);
 	if (e.changedTouches) {
@@ -145,6 +145,10 @@ $(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_ph
 		$(".detail_window_load_content").empty().load("./photo_viewer.html", function () {
 			$(".detail_window").addClass("show");
 			initSlider();
+		});
+	} else if(this.className.indexOf("app_video") !== -1) {
+		$(".detail_window_load_content").empty().load("./video_viewer.html", function () {
+			$(".detail_window").addClass("show");
 		});
 	}
 });
@@ -198,6 +202,21 @@ $('main').on('touchmove', function(e) {
 $('main').on('touchend', function() {
 	//do nothing
 });
+
+// video
+$(document).on("click", "#video_nav .thumb_video", function (e) {
+	$(".video_app_content").addClass("playing");
+})
+
+$(document).on("touchend", ".video_app_content .detail_close_btn", function (e) {
+	$(".video_app_content").removeClass("playing");
+	var video = $(".video_app_content video")[0];
+	video.pause();
+	video.currentTime = 0;
+})
+
+
+// 玄関に人がきた
 
 
 // chart

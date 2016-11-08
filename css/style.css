@@ -564,6 +564,70 @@ app detail
       width: 100px;
       height: 100px; }
 
+.video_app_content .video_detail {
+  background-color: #111; }
+  .video_app_content .video_detail #video_nav {
+    overflow: auto;
+    height: calc(100% - 60px); }
+  .video_app_content .video_detail header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px; }
+    .video_app_content .video_detail header > * {
+      flex: 1 0 auto; }
+  .video_app_content .video_detail .header_close_btn {
+    padding: 1rem 2rem;
+    flex: none; }
+  .video_app_content .video_detail .thumb_video {
+    width: 25%;
+    float: left;
+    position: relative; }
+    .video_app_content .video_detail .thumb_video img {
+      width: 100%;
+      height: auto;
+      opacity: .5; }
+    .video_app_content .video_detail .thumb_video::after {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      content: "\f144";
+      font-family: "FontAwesome";
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 40px;
+      line-height: 0;
+      margin-left: -20px; }
+.video_app_content .video_play_window {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: .2s;
+  transform: scale(0); }
+  .video_app_content .video_play_window .video_play_window_inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .video_app_content .video_play_window .video_play_window_inner > * {
+      flex: 1 0 auto; }
+    .video_app_content .video_play_window .video_play_window_inner video {
+      width: 100%;
+      height: auto; }
+  .video_app_content .video_play_window .detail_close_btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 0 2px #000, 0 0 10px #000; }
+.video_app_content.playing .video_play_window {
+  transform: scale(1); }
+
 /* デスクトップPCではLINEボタンを表示しない */
 @media screen and (min-width: 480px) {
   .sc-li {
