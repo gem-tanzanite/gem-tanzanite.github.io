@@ -191,12 +191,22 @@ $(document).on("change","#transition_type", function () {
 var init_pos = 0;
 $('main').on('touchstart', function(e) {
 	if (e.changedTouches) {
-		init_pos = e.changedTouches[0].pageX + $('main').scrollLeft();
+    var pageX = 0;
+    for (var i = 0; i < e.touches.length; i++) {
+      var touch = e.touches[i];
+      pageX = Math.max(touch.pageX, pageX);
+    }
+		init_pos = pageX + $('main').scrollLeft();
 	}
 });
 $('main').on('touchmove', function(e) {
-	if (e.changedTouches) {
-		$('main').scrollLeft(init_pos - e.changedTouches[0].pageX);
+	if (e.changedTouches && e.changedTouches.length === 1) {
+    var pageX = 0;
+    for (var i = 0; i < e.touches.length; i++) {
+      var touch = e.touches[i];
+      pageX = Math.max(touch.pageX, pageX);
+    }
+		$('main').scrollLeft(init_pos - pageX);
 	}
 });
 $('main').on('touchend', function() {
