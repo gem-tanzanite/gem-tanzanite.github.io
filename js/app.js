@@ -214,7 +214,7 @@ $('main').on('touchend', function() {
 });
 
 // video
-$(document).on("click", "#video_nav .thumb_video", function (e) {
+$(document).on("touchstart", "#video_nav .thumb_video", function (e) {
 	$(".video_app_content").addClass("playing");
 })
 
