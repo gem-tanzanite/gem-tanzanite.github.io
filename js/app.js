@@ -87,6 +87,38 @@ function initSlider () {
 
 }
 
+function initVideoViewerEvent() {
+	var init_video_pos = 0;
+	var startVideoPageY = 0;
+	var moveVideoPageY = 0;
+	$('#video_nav').on('touchstart', function(e) {
+		if (e.touches && e.touches.length > 0) {
+		 init_video_pos = e.touches[0].pageY + $('#video_nav').scrollTop();
+		 if (e.touches.length === 1) {
+			 startVideoPageY = e.touches[0].pageY;
+		 }
+	 }
+	});
+	$('#video_nav').on('touchend', function(e) {
+		if (e.touches) {
+			if (e.touches.length > 0) {
+				init_video_pos = e.touches[0].pageY + $('#video_nav').scrollTop();
+			} else {
+				if (moveVideoPageY > THRESHOLD) {
+					e.stopPropagation();
+		 		}
+				startVideoPageY = moveVideoPageY = 0;
+	 		}
+		}
+	});
+	$('#video_nav').on('touchmove', function(e) {
+		if (e.touches) {
+			$('#video_nav').scrollTop(init_video_pos - e.touches[0].pageY);
+			moveVideoPageY = Math.abs(e.touches[0].pageY - startVideoPageY);
+		}
+	});
+}
+
 $(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video").on("touchstart", function (e) {
 	$(this).addClass("active");
 	if (e.changedTouches) {
@@ -150,6 +182,7 @@ $(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_ph
 	} else if(this.className.indexOf("app_video") !== -1) {
 		$(".detail_window_load_content").empty().load("./video_viewer.html", function () {
 			$(".detail_window").addClass("show");
+			initVideoViewerEvent();
 		});
 	}
 });
@@ -204,7 +237,7 @@ $('main').on('touchmove', function(e) {
 });
 
 // video
-$(document).on("touchstart", "#video_nav .thumb_video", function (e) {
+$(document).on("touchend", "#video_nav .thumb_video", function (e) {
 	$(".video_app_content").addClass("playing");
 })
 
