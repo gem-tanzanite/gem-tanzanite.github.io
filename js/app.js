@@ -156,12 +156,14 @@ $(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_ph
 
 $(document).on("touchend", ".close_btn", function () {
 	$(".detail_window").removeClass("show");
+	$(".detail_window_load_content").empty();
 	if (location.hash.match(/#id_ctrl|photo/gi)) {
 		//location.hash = ""
 	}
 });
 $(document).on("touchend", ".header_close_btn", function () {
 	$(".detail_window").removeClass("show");
+	$(".detail_window_load_content").empty();
 	location.hash = '';
   $(".global_header").removeClass("hide_close");
 });
