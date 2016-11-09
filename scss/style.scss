@@ -142,7 +142,12 @@ ul, li, dl, dt, dd {
 		right: 20px;
 		top: 10px;
 		font-size: 26px;
+		width: 100px;
+		height: 50px;
 		display: none;
+		.fa {
+			float: right;
+		}
 	}
 	&.hide_close {
 		.timer, .etc {
