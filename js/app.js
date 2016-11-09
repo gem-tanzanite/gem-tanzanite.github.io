@@ -189,32 +189,19 @@ $(document).on("change","#transition_type", function () {
 });
 
 var init_pos = 0;
-$('main').on('touchstart', function(e) {
-	if (e.changedTouches) {
-    var pageX = 0;
-    for (var i = 0; i < e.touches.length; i++) {
-      var touch = e.touches[i];
-      pageX = Math.max(touch.pageX, pageX);
-    }
-		init_pos = pageX + $('main').scrollLeft();
+$('main').on('touchstart touchend', function(e) {
+	if (e.touches && e.touches.length > 0) {
+		init_pos = e.touches[0].pageX + $('main').scrollLeft();
 	}
 });
 $('main').on('touchmove', function(e) {
-	if (e.changedTouches && e.changedTouches.length === 1) {
-    var pageX = 0;
-    for (var i = 0; i < e.touches.length; i++) {
-      var touch = e.touches[i];
-      pageX = Math.max(touch.pageX, pageX);
-    }
-		$('main').scrollLeft(init_pos - pageX);
+	if (e.touches) {
+		$('main').scrollLeft(init_pos - e.touches[0].pageX);
 	}
-});
-$('main').on('touchend', function() {
-	//do nothing
 });
 
 // video
-$(document).on("click", "#video_nav .thumb_video", function (e) {
+$(document).on("touchstart", "#video_nav .thumb_video", function (e) {
 	$(".video_app_content").addClass("playing");
 })
 
