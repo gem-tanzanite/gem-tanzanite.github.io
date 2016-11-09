@@ -73,15 +73,16 @@ function initSlider () {
 		event.preventDefault();
 	});
 
-	$('#transition_selection').text(transition_types[transtion_type_index]);
-	$('#transition_selection').on('touchend', function() {
+	var selector = $('#transition_selection');
+	selector.text(transition_types[transtion_type_index]);
+	selector.on('touchend', function() {
 		if (transtion_type_index < transition_types.length -1) {
 			transtion_type_index += 1;
 		} else {
 			transtion_type_index = 0;
 		}
 		transition_type = transition_types[transtion_type_index];
-		$('#transition_selection').text(transition_type);
+		selector.text(transition_type);
 	});
 
 }
