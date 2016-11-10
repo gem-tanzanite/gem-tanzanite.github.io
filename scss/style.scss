@@ -139,13 +139,15 @@ ul, li, dl, dt, dd {
 	}
 	.header_close_btn {
 		position: absolute;
-		right: 20px;
-		top: 17px;
+		right: 0px;
+		top: 0px;
 		font-size: 26px;
 		width: 100px;
-		height: 50px;
+		height: 60px;
 		display: none;
 		.fa {
+			margin-right: 20px;
+			margin-top: 17px;
 			float: right;
 		}
 	}
