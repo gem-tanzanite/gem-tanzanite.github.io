@@ -725,11 +725,18 @@ app detail
 		}
 		.detail_close_btn {
 			position: absolute;
-			right: 20px;
-			top: 20px;
+			right: 0px;
+			top: 0px;
+			width: 100px;
+			height: 100px;
 			z-index: 2;
 			color: white;
 			text-shadow: 0 0 2px #000, 0 0 10px #000;
+			.fa {
+				margin-right: 25px;
+				margin-top: 25px;
+				float: right;
+			}
 		}
 	}
 	&.playing {

@@ -2,9 +2,11 @@
 @font-face {
   font-family: 'DIN Light';
   src: url(../fonts/din-light-webfont.ttf); }
+
 @font-face {
   font-family: 'Noto';
   src: url(../fonts/NotoSansCJKJP_demiLight_subset.otf); }
+
 * {
   box-sizing: border-box; }
 
@@ -381,6 +383,7 @@ app detail
     margin-right: 4px;
     position: relative;
     top: -4px; }
+
 .legend_bar .last_year span {
   background-color: #999; }
 
@@ -450,6 +453,7 @@ app detail
     width: 0; }
   100% {
     width: 680px; } }
+
 .tooltip {
   position: absolute;
   border-radius: 4px;
@@ -600,6 +604,7 @@ app detail
       font-size: 40px;
       line-height: 0;
       margin-left: -20px; }
+
 .video_app_content .video_play_window {
   background-color: #000;
   position: absolute;
@@ -620,11 +625,18 @@ app detail
       height: auto; }
   .video_app_content .video_play_window .detail_close_btn {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
     z-index: 2;
     color: white;
     text-shadow: 0 0 2px #000, 0 0 10px #000; }
+    .video_app_content .video_play_window .detail_close_btn .fa {
+      margin-right: 25px;
+      margin-top: 25px;
+      float: right; }
+
 .video_app_content.playing .video_play_window {
   transform: scale(1); }
 
@@ -632,4 +644,5 @@ app detail
 @media screen and (min-width: 480px) {
   .sc-li {
     display: none; } }
+
 /* 呉さんのSCSS読み込み */
