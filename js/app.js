@@ -236,18 +236,23 @@ $('main').on('touchmove', function(e) {
 	}
 });
 
+function hackPause() {
+	$(".video_app_content video")[0].play();
+}
+
 // video
 $(document).on("touchend", "#video_nav .thumb_video", function (e) {
 	$(".video_app_content").addClass("playing");
+	$(".video_app_content video").on('pause', hackPause);  // temporary code
 })
 
 $(document).on("touchend", ".video_app_content .detail_close_btn", function (e) {
 	$(".video_app_content").removeClass("playing");
+	$(".video_app_content video").off('pause', hackPause);  // temporary code
 	var video = $(".video_app_content video")[0];
 	video.pause();
 	video.currentTime = 0;
 })
-
 
 // 玄関に人がきた
 
