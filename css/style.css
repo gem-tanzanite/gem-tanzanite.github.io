@@ -160,6 +160,8 @@ main {
   background-color: #fff;
   height: 100%;
   margin: 0 10px; }
+  .app_panel.app_home .params_list ul li em {
+    font-style: normal; }
 
 .chart_panel {
   transition: .2s; }
