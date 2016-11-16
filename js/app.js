@@ -248,6 +248,13 @@ $(document).on("touchend", ".video_app_content .detail_close_btn", function (e) 
 	$('.video_play_window_inner').empty();
 })
 
+//時計
+var worker = new Worker('./js/clock.js');
+worker.addEventListener('message', function(e) {
+	$('#meridian').text(e.data.meridian);
+	$('time').text(e.data.timeString);
+});
+
 
 // 玄関に人がきた
 
