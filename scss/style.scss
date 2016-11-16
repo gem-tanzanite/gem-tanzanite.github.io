@@ -238,6 +238,9 @@ main {
 				&:first-of-type {
 					border: none;
 				}
+				em {
+					font-style: normal;
+				}
 			}
 		}
 	}

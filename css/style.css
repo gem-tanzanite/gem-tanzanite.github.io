@@ -221,6 +221,8 @@ main {
         width: 25%; }
         .app_home .params_list ul li:first-of-type {
           border: none; }
+        .app_home .params_list ul li em {
+          font-style: normal; }
   .app_home .param_icon {
     margin-bottom: 10px; }
     .app_home .param_icon .fa {
