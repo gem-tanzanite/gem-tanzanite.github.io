@@ -106,7 +106,9 @@ function initVideoViewerEvent() {
 			} else {
 				if (moveVideoPageY > THRESHOLD) {
 					e.stopPropagation();
-		 		}
+		 		} else {
+					$('.video_play_window_inner').html('<video id="video_player" src="video/video_01.mp4" controls autoplay></video>')
+				}
 				startVideoPageY = moveVideoPageY = 0;
 	 		}
 		}
@@ -243,9 +245,7 @@ $(document).on("touchend", "#video_nav .thumb_video", function (e) {
 
 $(document).on("touchend", ".video_app_content .detail_close_btn", function (e) {
 	$(".video_app_content").removeClass("playing");
-	var video = $(".video_app_content video")[0];
-	video.pause();
-	video.currentTime = 0;
+	$('.video_play_window_inner').empty();
 })
 
 
