@@ -107,7 +107,7 @@ function initVideoViewerEvent() {
 				if (moveVideoPageY > THRESHOLD) {
 					e.stopPropagation();
 		 		} else {
-					$('.video_play_window_inner').html('<video id="video_player" src="video/video_01.mp4" controls autoplay></video>')
+					$('.video_play_window_inner').html('<video id="video_player" src="video/video_01.mp4" controls autoplay></video>');
 				}
 				startVideoPageY = moveVideoPageY = 0;
 	 		}
@@ -239,14 +239,14 @@ $('main').on('touchmove', function(e) {
 });
 
 // video
-$(document).on("touchend", "#video_nav .thumb_video", function (e) {
+$(document).on("touchend", "#video_nav .thumb_video", function () {
 	$(".video_app_content").addClass("playing");
-})
+});
 
-$(document).on("touchend", ".video_app_content .detail_close_btn", function (e) {
+$(document).on("touchend", ".video_app_content .detail_close_btn", function () {
 	$(".video_app_content").removeClass("playing");
 	$('.video_play_window_inner').empty();
-})
+});
 
 
 // 玄関に人がきた
