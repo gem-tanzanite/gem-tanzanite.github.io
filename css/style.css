@@ -495,7 +495,7 @@ app detail
     height: 250px;
     margin-left: 60px;
     position: relative;
-    animation: show_chart_animation .8s .1s; }
+    animation: show_chart_animation 1.8s 0s; }
 
 .temp_detail {
   background-image: linear-gradient(#006A92, #003959); }
