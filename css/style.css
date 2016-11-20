@@ -2,11 +2,9 @@
 @font-face {
   font-family: 'DIN Light';
   src: url(../fonts/din-light-webfont.ttf); }
-
 @font-face {
   font-family: 'Noto';
   src: url(../fonts/NotoSansCJKJP_demiLight_subset.otf); }
-
 * {
   box-sizing: border-box; }
 
@@ -93,14 +91,15 @@ ul, li, dl, dt, dd {
     flex: 1 0 auto; }
 
 .global_header {
-  background-color: #fff;
+  background-image: linear-gradient(#00174E, #00174E);
   padding: 1.1rem 1.8rem;
   height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 2px #333; }
+  box-shadow: 0 2px 2px #333;
+  color: white; }
   .global_header > * {
     flex: 1 0 auto; }
   .global_header > * {
@@ -117,7 +116,7 @@ ul, li, dl, dt, dd {
     text-align: center;
     line-height: 1; }
     .global_header .logo img {
-      width: 150px; }
+      width: 200px; }
   .global_header .etc {
     text-align: right; }
     .global_header .etc > * {
@@ -189,11 +188,18 @@ main {
     color: white;
     text-decoration: none;
     margin-top: 40px;
+    position: relative;
     text-align: center; }
     .app_home .tit .fa {
       font-size: 200%;
       text-shadow: 0 2px 10px #000, 0 2px 2px #000; }
+    .app_home .tit .tanzanite_logo img {
+      height: 120px; }
     .app_home .tit p {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
       font-size: 240%;
       margin: .1rem 0 0;
       text-shadow: 0 2px 10px #000, 0 2px 2px #000;
@@ -244,24 +250,72 @@ main {
   .app_home .param_data {
     font-size: 12px; }
 
+.tit_wrap {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+  .tit_wrap > * {
+    flex: 1 0 auto; }
+  .tit_wrap::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .tit_wrap .tit_wrap_inner {
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    display: block;
+    background: url(../img/icon_format.png) center no-repeat;
+    background-size: contain; }
+  .tit_wrap i {
+    font-size: 180%;
+    color: white;
+    margin-top: 1.6rem; }
+  .tit_wrap p {
+    position: relative;
+    top: 0.5rem;
+    margin: 0;
+    color: white;
+    font-size: 200%; }
+
 .app_photo {
   background: url(../img/children.jpg) center no-repeat;
   background-size: cover;
-  position: relative; }
+  position: relative;
+ /* 
+.tit {
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 1rem;
+	span {
+		font-size: 70%;
+	}
+} */ }
   .app_photo #photo_viewer {
     display: block;
     width: 100%;
     height: 100%; }
-  .app_photo .tit {
-    color: white;
-    position: absolute;
-    bottom: 0;
-    left: 1rem; }
-    .app_photo .tit span {
-      font-size: 70%; }
+
+.app_video {
+  background: url(../img/app_img_video.png) center no-repeat;
+  background-size: cover; }
 
 .app_map {
   background: url(../img/thumb_map.png) center no-repeat;
+  background-size: cover; }
+
+.app_recipe {
+  background: url(../img/app_img_dish.png) center no-repeat;
   background-size: cover; }
 
 /*
@@ -391,7 +445,6 @@ app detail
     margin-right: 4px;
     position: relative;
     top: -4px; }
-
 .legend_bar .last_year span {
   background-color: #999; }
 
@@ -461,7 +514,6 @@ app detail
     width: 0; }
   100% {
     width: 680px; } }
-
 .tooltip {
   position: absolute;
   border-radius: 4px;
@@ -585,7 +637,8 @@ app detail
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 60px; }
+    height: 60px;
+    background-image: linear-gradient(#00174E, #00174E); }
     .video_app_content .video_detail header > * {
       flex: 1 0 auto; }
   .video_app_content .video_detail .header_close_btn {
@@ -612,7 +665,6 @@ app detail
       font-size: 40px;
       line-height: 0;
       margin-left: -20px; }
-
 .video_app_content .video_play_window {
   background-color: #000;
   position: absolute;
@@ -644,7 +696,6 @@ app detail
       margin-right: 25px;
       margin-top: 25px;
       float: right; }
-
 .video_app_content.playing .video_play_window {
   transform: scale(1); }
 
@@ -652,5 +703,4 @@ app detail
 @media screen and (min-width: 480px) {
   .sc-li {
     display: none; } }
-
 /* 呉さんのSCSS読み込み */
