@@ -256,6 +256,11 @@ worker.addEventListener('message', function(e) {
 });
 
 
+// Header
+$(document).on("touchend", ".logo", function () {
+  location.href="/"; // reload without hash.(not force reload.)
+});
+
 // 玄関に人がきた
 
 
