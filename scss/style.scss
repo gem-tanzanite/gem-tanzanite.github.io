@@ -378,6 +378,7 @@ app detail
 	position: absolute;
 	top: 60px;
 	left: 0;
+	z-index: 3;
 	&.app_home {
 		@include fb(space-between, stretch);
 		flex-direction: row;

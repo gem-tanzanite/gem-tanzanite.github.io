@@ -332,7 +332,8 @@ app detail
   height: 420px;
   position: absolute;
   top: 60px;
-  left: 0; }
+  left: 0;
+  z-index: 3; }
   .app_detail.app_home {
     display: flex;
     justify-content: space-between;
