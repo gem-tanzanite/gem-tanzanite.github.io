@@ -744,6 +744,8 @@ app detail
 		#video_nav {
 			overflow: auto;
 			height: calc(100% - 60px);
+			@include fb(space-around);
+			flex-wrap: wrap;
 		}
 		header {
 			@include fb(flex-end, center);
@@ -755,13 +757,20 @@ app detail
 			flex: none;
 		}
 		.thumb_video {
-			width: 25%;
-			float: left;
+			/* width: 48%;
+			margin: 2%;
+			float: left; */
 			position: relative;
 			img {
 				width: 100%;
 				height: auto;
 				opacity: .5;
+			}
+			.video_tit {
+				position: absolute;
+				bottom: 0;
+				padding: .4rem;
+				color: white;
 			}
 			&::after {
 				position: absolute;

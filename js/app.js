@@ -101,13 +101,20 @@ function initVideoViewerEvent() {
 	});
 	$('#video_nav').on('touchend', function(e) {
 		if (e.touches) {
+			var video_url = "";
+		 	if($(e.target).hasClass("thumb_video")) {
+		 		video_url = $(e.target).data("video-url");
+		 	}else{
+		 		video_url = $(e.target).closest(".thumb_video").data("video-url");
+		 	}
 			if (e.touches.length > 0) {
 				init_video_pos = e.touches[0].pageY + $('#video_nav').scrollTop();
 			} else {
 				if (moveVideoPageY > THRESHOLD) {
 					e.stopPropagation();
 		 		} else {
-					$('.video_play_window_inner').html('<video id="video_player" src="video/video_01.mp4" controls autoplay></video>');
+					/*$('.video_play_window_inner').html('<video id="video_player" src="video/video_01.mp4" controls autoplay></video>');*/
+					$('.video_play_window_inner').html('<video id="video_player" src="'+video_url+'" controls autoplay></video>');
 				}
 				startVideoPageY = moveVideoPageY = 0;
 	 		}
