@@ -746,6 +746,38 @@ app detail
 			height: calc(100% - 60px);
 			@include fb(space-around);
 			flex-wrap: wrap;
+			.thumb_video {
+				/* width: 48%;
+				margin: 2%;
+				float: left; */
+				flex: 1 0 380px;
+				position: relative;
+				img {
+					width: 100%;
+					height: auto;
+					opacity: .5;
+				}
+				.video_tit {
+					position: absolute;
+					bottom: 0;
+					padding: .4rem;
+					color: white;
+				}
+				&::after {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					content: "\f144";
+					font-family: "FontAwesome";
+					font-weight: normal;
+					font-style: normal;
+					display: inline-block;
+					color: rgba(white, .5);
+					font-size: 40px;
+					line-height: 0;
+					margin-left: -20px;
+				}
+			}
 		}
 		header {
 			@include fb(flex-end, center);
@@ -756,37 +788,7 @@ app detail
 			padding: 1rem 2rem;
 			flex: none;
 		}
-		.thumb_video {
-			/* width: 48%;
-			margin: 2%;
-			float: left; */
-			position: relative;
-			img {
-				width: 100%;
-				height: auto;
-				opacity: .5;
-			}
-			.video_tit {
-				position: absolute;
-				bottom: 0;
-				padding: .4rem;
-				color: white;
-			}
-			&::after {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				content: "\f144";
-				font-family: "FontAwesome";
-				font-weight: normal;
-				font-style: normal;
-				display: inline-block;
-				color: rgba(white, .5);
-				font-size: 40px;
-				line-height: 0;
-				margin-left: -20px;
-			}
-		}
+
 	}
 	.video_play_window {
 		background-color: #000;

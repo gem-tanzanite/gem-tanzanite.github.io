@@ -640,6 +640,34 @@ app detail
     flex-wrap: wrap; }
     .video_app_content .video_detail #video_nav > * {
       flex: 1 0 auto; }
+    .video_app_content .video_detail #video_nav .thumb_video {
+      /* width: 48%;
+      margin: 2%;
+      float: left; */
+      flex: 1 0 380px;
+      position: relative; }
+      .video_app_content .video_detail #video_nav .thumb_video img {
+        width: 100%;
+        height: auto;
+        opacity: .5; }
+      .video_app_content .video_detail #video_nav .thumb_video .video_tit {
+        position: absolute;
+        bottom: 0;
+        padding: .4rem;
+        color: white; }
+      .video_app_content .video_detail #video_nav .thumb_video::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        content: "\f144";
+        font-family: "FontAwesome";
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 40px;
+        line-height: 0;
+        margin-left: -20px; }
   .video_app_content .video_detail header {
     display: flex;
     justify-content: flex-end;
@@ -651,33 +679,6 @@ app detail
   .video_app_content .video_detail .header_close_btn {
     padding: 1rem 2rem;
     flex: none; }
-  .video_app_content .video_detail .thumb_video {
-    /* width: 48%;
-    margin: 2%;
-    float: left; */
-    position: relative; }
-    .video_app_content .video_detail .thumb_video img {
-      width: 100%;
-      height: auto;
-      opacity: .5; }
-    .video_app_content .video_detail .thumb_video .video_tit {
-      position: absolute;
-      bottom: 0;
-      padding: .4rem;
-      color: white; }
-    .video_app_content .video_detail .thumb_video::after {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      content: "\f144";
-      font-family: "FontAwesome";
-      font-weight: normal;
-      font-style: normal;
-      display: inline-block;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 40px;
-      line-height: 0;
-      margin-left: -20px; }
 .video_app_content .video_play_window {
   background-color: #000;
   position: absolute;
@@ -717,3 +718,5 @@ app detail
   .sc-li {
     display: none; } }
 /* 呉さんのSCSS読み込み */
+
+/*# sourceMappingURL=style.css.map */
