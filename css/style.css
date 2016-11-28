@@ -2,9 +2,11 @@
 @font-face {
   font-family: 'DIN Light';
   src: url(../fonts/din-light-webfont.ttf); }
+
 @font-face {
   font-family: 'Noto';
   src: url(../fonts/NotoSansCJKJP_demiLight_subset.otf); }
+
 * {
   box-sizing: border-box; }
 
@@ -291,16 +293,16 @@ main {
   background: url(../img/children.jpg) center no-repeat;
   background-size: cover;
   position: relative;
- /* 
-.tit {
-	color: white;
-	position: absolute;
-	bottom: 0;
-	left: 1rem;
-	span {
-		font-size: 70%;
-	}
-} */ }
+  /*
+	.tit {
+		color: white;
+		position: absolute;
+		bottom: 0;
+		left: 1rem;
+		span {
+			font-size: 70%;
+		}
+	} */ }
   .app_photo #photo_viewer {
     display: block;
     width: 100%;
@@ -446,6 +448,7 @@ app detail
     margin-right: 4px;
     position: relative;
     top: -4px; }
+
 .legend_bar .last_year span {
   background-color: #999; }
 
@@ -515,6 +518,7 @@ app detail
     width: 0; }
   100% {
     width: 680px; } }
+
 .tooltip {
   position: absolute;
   border-radius: 4px;
@@ -632,7 +636,7 @@ app detail
 .video_app_content .video_detail {
   background-color: #111; }
   .video_app_content .video_detail #video_nav {
-    overflow: auto;
+    overflow: hidden;
     height: calc(100% - 60px);
     display: flex;
     justify-content: space-around;
@@ -642,8 +646,8 @@ app detail
       flex: 1 0 auto; }
     .video_app_content .video_detail #video_nav .thumb_video {
       /* width: 48%;
-      margin: 2%;
-      float: left; */
+				margin: 2%;
+				float: left; */
       flex: 1 0 380px;
       position: relative; }
       .video_app_content .video_detail #video_nav .thumb_video img {
@@ -679,6 +683,7 @@ app detail
   .video_app_content .video_detail .header_close_btn {
     padding: 1rem 2rem;
     flex: none; }
+
 .video_app_content .video_play_window {
   background-color: #000;
   position: absolute;
@@ -710,6 +715,7 @@ app detail
       margin-right: 25px;
       margin-top: 25px;
       float: right; }
+
 .video_app_content.playing .video_play_window {
   transform: scale(1); }
 
@@ -717,6 +723,5 @@ app detail
 @media screen and (min-width: 480px) {
   .sc-li {
     display: none; } }
-/* 呉さんのSCSS読み込み */
 
-/*# sourceMappingURL=style.css.map */
+/* 呉さんのSCSS読み込み */
