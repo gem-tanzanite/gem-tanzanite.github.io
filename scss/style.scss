@@ -333,7 +333,7 @@ main {
 		display: block;
 		width: 100%;
 		height: 100%;
-	}/* 
+	}/*
 	.tit {
 		color: white;
 		position: absolute;
@@ -742,7 +742,7 @@ app detail
 	.video_detail {
 		background-color: #111;
 		#video_nav {
-			overflow: auto;
+			overflow: hidden;
 			height: calc(100% - 60px);
 			@include fb(space-around);
 			flex-wrap: wrap;
