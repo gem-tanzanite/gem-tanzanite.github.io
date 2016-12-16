@@ -1,0 +1,80 @@
+.container {
+    width:  800px;
+    height: 480px;
+}
+
+.container,
+.detail.temp_detail,
+.detail.power_detail,
+#photo_nav,
+.detail.video_detail
+{
+    transform: scale(0.6, 0.567);
+    transform-origin: 0% 0%;
+}
+
+.app_panel.app_home .params_list ul li {
+    border-left: 2px solid #fff;
+}
+
+.app_panel.app_home .params_list ul {
+    border: 2px solid #fff;
+    border-left: 0;
+}
+
+.app_detail.app_home .home_ctrl_main_side .tit_inner {
+    padding: .4rem .4rem 0;
+}
+
+.app_detail.app_home .home_ctrl_chart_side {
+    padding: .4rem .4rem .4rem 0;
+}
+
+.app_detail.app_home .params_list {
+    padding: .4rem;
+}
+
+.app_detail {
+    top: 30px;
+    width: 480px;
+    height: 242px;
+    font-size: 6px;
+}
+
+.app_detail.app_home .ctrl_btns {
+    height: 112px;
+}
+
+.app_detail.app_home .chart_panel {
+    height: calc(50% - 0.2rem);
+}
+
+.app_detail.app_home .ctrl_btns li span {
+    padding: .2rem 0 0;
+}
+
+.app_detail.app_home .param_value img {
+    height: 28px;
+}
+
+.app_detail.app_home .param_value {
+    min-height: 25px;
+}
+
+.app_detail .param_tit {
+    font-size: 8px;
+}
+
+.app_detail .param_data {
+    font-size: 6px;
+}
+
+.detail.photo_detail {
+    width: 600px;
+    height: 272px;
+}
+
+#slider {
+  width: 272px;
+  height: 272px;
+}
