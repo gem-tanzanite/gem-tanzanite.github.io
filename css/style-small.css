@@ -69,6 +69,12 @@
     font-size: 6px;
 }
 
+.temp_detail .close_btn {
+  right: 20px;
+  top: 20px;
+  padding: 15px;
+}
+
 .detail.photo_detail {
     width: 600px;
     height: 272px;
