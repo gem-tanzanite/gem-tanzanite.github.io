@@ -184,10 +184,14 @@ $(document).on("touchend", ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_ph
 			$(".detail_window").addClass("show");
 		});
 	} else if(this.className.indexOf("app_photo") !== -1) {
-		var html_path = "./photo_viewer.html";
-		if (window.innerWidth <= 480)
-			html_path = "./photo_viewer_small.html"
-		$(".detail_window_load_content").empty().load(html_path, function () {
+		$(".detail_window_load_content").empty().load("./photo_viewer.html", function () {
+			if (window.innerWidth <= 480) {
+				$.map($(".detail.photo_detail img"), function(element, i) {
+					var path = $(element).attr("src");
+					path = path.replace("img/photo", "img/photo-small");
+					$(element).attr("src", path)
+				});
+			}
 			$(".detail_window").addClass("show");
 			initSlider();
 		});
