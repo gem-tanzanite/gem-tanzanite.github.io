@@ -3,3 +3,8 @@ Project Tanzanite is a part of [Project GEM (Gecko Embedded)](https://github.com
 
 You can try the demo contents with GitHub pages: https://gem-tanzanite.github.io/
 
+If you want to try it on a PC, please use Mozilla Firefox then follow the next steps:
+
+* Press Ctrl + Shift + M (or Cmd + Opt + M on OS X) to activate "Responsive Design View"
+* Change the view size to 800 x 472
+* Press the touch icon then reload the contents to enable touch events
