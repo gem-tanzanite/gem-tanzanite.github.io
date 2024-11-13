@@ -9,9 +9,9 @@ If you want to try it on a PC, please use Mozilla Firefox then follow the next s
 * Change the view size to 800 x 480
 * Press the touch icon then reload the contents to enable touch events
 
-## 検証環境
+## Operation verification in local environment
 
-手元の開発環境で動作検証する際、以下のブラウザおよびバージョンにて行う。
+When verifying operation in your development environment, use the following browsers and versions.
 
 - Chrome 109
 - Firefox 91 and 102.x
