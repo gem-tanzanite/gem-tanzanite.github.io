@@ -203,14 +203,28 @@ main > * {
   background-color: #fff;
   height: 100%;
   margin: 0 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.app_panel:hover {
+  filter: brightness(1.4);
+  cursor: pointer;
+}
+.app_panel:active {
+  filter: brightness(0.8);
+  transform: scale(0.97);
 }
 
 .chart_panel {
   transition: 0.2s;
 }
-.chart_panel.active {
-  transform: scale(0.9);
-  opacity: 0.8;
+.chart_panel:hover {
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+.chart_panel:active {
+  filter: brightness(0.8);
+  transform: scale(0.97);
 }
 
 .chart_temp {
@@ -366,16 +380,6 @@ main > * {
   background: url(../img/children.jpg) center no-repeat;
   background-size: cover;
   position: relative;
-  /*
-  .tit {
-  	color: white;
-  	position: absolute;
-  	bottom: 0;
-  	left: 1rem;
-  	span {
-  		font-size: 70%;
-  	}
-  } */
 }
 .app_photo #photo_viewer {
   display: block;
@@ -483,6 +487,7 @@ app detail
   color: #525252;
   line-height: 1;
   transition: 0.2s;
+  cursor: pointer;
 }
 .app_detail.app_home .ctrl_btns li > * {
   flex: 1 0 auto;
@@ -509,13 +514,17 @@ app detail
 .app_detail.app_home .ctrl_btns li .img_icon img {
   width: 40px;
 }
-.app_detail.app_home .ctrl_btns li.active {
-  background-color: #20264A;
-  transform: scale(0.95);
+.app_detail.app_home .ctrl_btns li:hover {
+  background-color: rgba(1, 1, 3, 0.05);
 }
-.app_detail.app_home .ctrl_btns li.active .fa,
-.app_detail.app_home .ctrl_btns li.active span {
-  color: white;
+.app_detail.app_home .ctrl_btns li:active {
+  background-color: rgba(1, 1, 3, 0.2);
+}
+.app_detail.app_home .ctrl_btns li:active div {
+  transform: scale(0.97);
+}
+.app_detail.app_home .ctrl_btns li.active {
+  background-color: rgba(63, 75, 145, 0.2);
 }
 .app_detail.app_home .params_list {
   flex: 1 0 0;
@@ -744,7 +753,15 @@ app detail
   background-color: #000;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
   position: relative;
+  transition: 0.05s;
+}
+.photo_detail .detail_header #transition_selection:hover {
+  opacity: 0.8;
+}
+.photo_detail .detail_header #transition_selection:active {
+  filter: brightness(0.7);
 }
 .photo_detail .detail_header #transition_selection::after {
   content: " ";
@@ -774,14 +791,27 @@ app detail
   float: right;
   padding: 0 0 0 6px;
 }
-#photo_nav div {
+#photo_nav .img {
   display: block;
   margin: 1px;
   float: left;
+  cursor: pointer;
+  transition: 0.05s;
 }
-#photo_nav div img {
+#photo_nav .img img {
   width: 100px;
   height: 100px;
+}
+#photo_nav .img:hover {
+  filter: brightness(1.2);
+}
+#photo_nav .img:active {
+  filter: brightness(0.7);
+}
+#photo_nav .img[aria-selected=true] {
+  outline: 2px solid #fff;
+  outline-style: inset;
+  transform: scale(0.95);
 }
 
 .video_app_content .video_detail {
@@ -799,11 +829,16 @@ app detail
   flex: 1 0 auto;
 }
 .video_app_content .video_detail #video_nav .thumb_video {
-  /* width: 48%;
-  margin: 2%;
-  float: left; */
   flex: 1 0 380px;
   position: relative;
+  cursor: pointer;
+  transition: 0.05s;
+}
+.video_app_content .video_detail #video_nav .thumb_video:hover {
+  filter: brightness(1.2);
+}
+.video_app_content .video_detail #video_nav .thumb_video:active {
+  filter: brightness(0.7);
 }
 .video_app_content .video_detail #video_nav .thumb_video img {
   width: 100%;

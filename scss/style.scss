@@ -107,8 +107,6 @@ dd {
 }
 
 .global_header {
-  //background-color: #fff;
-  //background-image: linear-gradient(#00174E, #00174E);
   @include header_color;
   padding: 1.1rem 1.8rem;
   height: $header_height;
@@ -186,12 +184,26 @@ main {
   background-color: #fff;
   height: 100%;
   margin: 0 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    filter: brightness(1.4);
+    cursor: pointer;
+  }
+  &:active {
+    filter: brightness(0.8);
+    transform: scale(0.97);
+  }
 }
 .chart_panel {
   transition: 0.2s;
-  &.active {
-    transform: scale(0.9);
-    opacity: 0.8;
+  &:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+  }
+  &:active {
+    filter: brightness(0.8);
+    transform: scale(0.97);
   }
 }
 .chart_temp {
@@ -210,15 +222,10 @@ main {
   @include fb(space-between, stretch);
   flex-direction: column;
   .tit {
-    //@include fb(center, center);
     color: white;
     text-decoration: none;
     margin-top: 40px;
     position: relative;
-    .tit_inner {
-      //flex: 1 0 auto;
-      //margin-top: 40px;
-    }
     text-align: center;
     .fa {
       font-size: 200%;
@@ -338,16 +345,7 @@ main {
     display: block;
     width: 100%;
     height: 100%;
-  } /*
-	.tit {
-		color: white;
-		position: absolute;
-		bottom: 0;
-		left: 1rem;
-		span {
-			font-size: 70%;
-		}
-	} */
+  }
 }
 
 .app_video {
@@ -370,8 +368,6 @@ app detail
 */
 
 #id_ctrl:target {
-  //display: block;
-  //z-index: 1;
   opacity: 1;
   transform: scale(1);
   transition: 0.2s;
@@ -387,8 +383,6 @@ app detail
   &.app_home {
     @include fb(space-between, stretch);
     flex-direction: row;
-    //display: none;
-    //z-index: -1;
     opacity: 0;
     position: absolute;
     transform: scale(0);
@@ -405,7 +399,6 @@ app detail
     .home_ctrl_main_side {
       width: 65%;
       .tit {
-        //height: 50%;
         margin-top: 0;
       }
       .tit_inner {
@@ -431,10 +424,10 @@ app detail
         @include fb(center, center);
         border-right: 1px solid $bgc;
         width: 25%;
-        //padding: 1.4rem 0;
         color: $bgc;
         line-height: 1;
         transition: 0.2s;
+        cursor: pointer;
         &:nth-child(-n + 4) {
           border-bottom: 1px solid $bgc;
         }
@@ -459,13 +452,18 @@ app detail
             width: 40px;
           }
         }
-        &.active {
-          background-color: $blue;
-          transform: scale(0.95);
-          .fa,
-          span {
-            color: white;
+
+        &:hover {
+          background-color: rgba(darken($blue, 20%), 0.05);
+        }
+        &:active {
+          background-color: rgba(darken($blue, 20%), 0.2);
+          div {
+            transform: scale(0.97);
           }
+        }
+        &.active {
+          background-color: rgba(lighten($blue, 20%), 0.2);
         }
       }
     }
@@ -591,7 +589,6 @@ app detail
 
 .power_detail {
   background-image: linear-gradient(#921f00, #592200);
-  //background-image: linear-gradient(#3B923D, #425946);
   .chart_area {
     .chart_area_content {
       background: url(../img/powerchart_detail_line.png) left top no-repeat;
@@ -702,7 +699,15 @@ app detail
       background-color: #000;
       border-radius: 4px;
       color: white;
+      cursor: pointer;
       position: relative;
+      transition: 0.05s;
+      &:hover {
+        opacity: 0.8;
+      }
+      &:active {
+        filter: brightness(0.7);
+      }
       &::after {
         content: " ";
         color: white;
@@ -732,13 +737,27 @@ app detail
   height: 480px;
   float: right;
   padding: 0 0 0 6px;
-  div {
+  .img {
     display: block;
     margin: 1px;
     float: left;
+    cursor: pointer;
     img {
       width: 100px;
       height: 100px;
+    }
+    transition: 0.05s;
+    &:hover {
+      filter: brightness(1.2);
+    }
+    &:active {
+      filter: brightness(0.7);
+    }
+
+    &[aria-selected="true"] {
+      outline: 2px solid #fff;
+      outline-style: inset;
+      transform: scale(0.95);
     }
   }
 }
@@ -751,12 +770,19 @@ app detail
       height: calc(100% - 60px);
       @include fb(space-around);
       flex-wrap: wrap;
+
       .thumb_video {
-        /* width: 48%;
-				margin: 2%;
-				float: left; */
         flex: 1 0 380px;
         position: relative;
+        cursor: pointer;
+        transition: 0.05s;
+        &:hover {
+          filter: brightness(1.2);
+        }
+        &:active {
+          filter: brightness(0.7);
+        }
+
         img {
           width: 100%;
           height: auto;

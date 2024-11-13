@@ -131,6 +131,10 @@ function initSlider() {
   });
   var obj = $("#photo_nav div.img");
   obj.on("click", function (event) {
+    obj.each((i, elem) => {
+      elem.setAttribute("aria-selected", false);
+    });
+    this.setAttribute("aria-selected", true);
     var index = obj.index(this); // 定義順インデックス
     // インデックス、トランジション（エフェクト）を指定してshowImage呼出し
     slider.showImage(
@@ -154,74 +158,34 @@ function initSlider() {
 }
 
 function initVideoViewerEvent() {
-  var init_video_pos = 0;
-  var startVideoPageY = 0;
-  var moveVideoPageY = 0;
-  /* $("#video_nav").on("touchstart", function (e) {
-    if (e.touches && e.touches.length > 0) {
-      init_video_pos = e.touches[0].pageY + $("#video_nav").scrollTop();
-      if (e.touches.length === 1) {
-        startVideoPageY = e.touches[0].pageY;
-      }
-    }
-  }); */
   $("#video_nav").on("click", function (e) {
-    //if (e.touches) {
     var video_url = "";
     if ($(e.target).hasClass("thumb_video")) {
       video_url = $(e.target).data("video-url");
     } else {
       video_url = $(e.target).closest(".thumb_video").data("video-url");
     }
-    /* if (e.touches.length > 0) {
-      init_video_pos = e.touches[0].pageY + $("#video_nav").scrollTop();
-    } else { */
     $(".video_play_window_inner").html(
       '<video id="video_player" src="' +
         video_url +
         '" controls autoplay></video>'
     );
-    //}
-    //}
   });
-  /* $("#video_nav").on("touchmove", function (e) {
-    if (e.touches) {
-      $("#video_nav").scrollTop(init_video_pos - e.touches[0].pageY);
-      moveVideoPageY = Math.abs(e.touches[0].pageY - startVideoPageY);
-    }
-  }); */
 }
-
-$(".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video").on(
-  "touchstart mousedown",
-  function (e) {
-    $(this).addClass("active");
-    if (e.changedTouches) {
-      startX = e.changedTouches[0].pageX;
-    }
-    //console.log(this)
-  }
-);
 
 $(document).on(
   "click",
   ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video",
   function (e) {
-    $(this).removeClass("active");
-    //console.log(this.className);
-    /* if (e.changedTouches) {
-      var moveX = Math.abs(e.changedTouches[0].pageX - startX);
-      startX = 0;
-      if (moveX > THRESHOLD) {
-        return;
-      }
-    } */
     if (this.className.indexOf("data_") !== -1) {
+      // トップの起床〜就寝までのボタンが押された時
+      $(".ctrl_btns li").removeClass("active");
       var datanum = $(this).attr("class");
       $(".app_temp .param_value em").text(params_data[datanum].temp);
       $(".app_temp .param_data ").text("冷房｜" + params_data[datanum].strong);
       $(".app_tv .param_value em").text(params_data[datanum].tv_ch);
       $(".app_tv .param_data em").text(params_data[datanum].tv_name);
+      $(this).addClass("active");
     } else if (this.className.indexOf("touchmonth_li") !== -1) {
       var index_li = Number($(this).attr("id").replace("m", ""));
       if ($(".detail").hasClass("power_detail")) {
@@ -249,7 +213,6 @@ $(document).on(
         $(".touchmonth_li").removeClass("active");
         $(this).addClass("active");
       }
-      //console.log(electro_power_data[index_li-1].comp_num)
     } else if (this.className.indexOf("chart_panel") !== -1) {
       var load_page =
         this.className.indexOf("chart_temp") === -1
@@ -288,9 +251,6 @@ $(document).on(
 $(document).on("click", ".close_btn", function () {
   $(".detail_window").removeClass("show");
   $(".detail_window_load_content").empty();
-  if (location.hash.match(/#id_ctrl|photo/gi)) {
-    //location.hash = ""
-  }
 });
 $(document).on("click", ".header_close_btn", function () {
   $(".detail_window").removeClass("show");
@@ -299,41 +259,14 @@ $(document).on("click", ".header_close_btn", function () {
   $(".global_header").removeClass("hide_close");
 });
 
-/* $("#anchor_id_ctrl").on("touchstart", function (e) {
-  if (e.changedTouches) {
-    startX = e.changedTouches[0].pageX;
-  }
-}); */
-
 $("#anchor_id_ctrl").on("click", function (e) {
-  /* if (e.changedTouches) {
-    var moveX = Math.abs(e.changedTouches[0].pageX - startX);
-    startX = 0;
-    if (moveX > THRESHOLD) {
-      return;
-    }
-    
-  } */
   $(".global_header").addClass("hide_close");
   location.hash = "#id_ctrl";
 });
 
 $(document).on("change", "#transition_type", function () {
   transition_type = this.value;
-  //initSlider();
 });
-
-/* var init_pos = 0;
-$("main").on("touchstart touchend", function (e) {
-  if (e.touches && e.touches.length > 0) {
-    init_pos = e.touches[0].pageX + $("main").scrollLeft();
-  }
-});
-$("main").on("touchmove mousemove", function (e) {
-  if (e.touches) {
-    $("main").scrollLeft(init_pos - e.touches[0].pageX);
-  }
-}); */
 
 // video
 $(document).on("click", "#video_nav .thumb_video", function () {
