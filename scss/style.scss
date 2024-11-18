@@ -495,8 +495,8 @@ app detail
 // detail
 
 .detail {
-  width: 800px;
-  height: 480px;
+  width: 100vw;
+  height: 100dvh;
 }
 
 .legend_bar {
@@ -723,29 +723,52 @@ app detail
     padding-top: 4px;
   }
   background-color: #000;
+  .container_detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+  }
   .slider_wrapper {
     overflow: hidden;
+    display: flex;
+    gap: 16px;
+    max-width: 800px;
+    margin: auto;
   }
 }
 #slider {
-  width: 480px;
+  /* width: 480px;
   height: 480px;
-  float: left;
+  float: left; */
+  flex-grow: 1;
+  .fluxslider {
+    width: 100% !important;
+  }
 }
 #photo_nav {
-  width: 320px;
+  /* width: 320px;
   height: 480px;
-  float: right;
-  padding: 0 0 0 6px;
+  float: right; */
+  flex-shrink: 1;
+  .thumbnail-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: 480px) {
+    .img {
+      width: 25%;
+      aspect-ratio: 1;
+    }
+  }
   .img {
     display: block;
-    margin: 1px;
-    float: left;
     cursor: pointer;
     img {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      aspect-ratio: 1;
     }
+
     transition: 0.05s;
     &:hover {
       filter: brightness(1.2);
