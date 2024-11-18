@@ -790,9 +790,6 @@ app detail
 }
 
 #slider {
-  /* width: 480px;
-  height: 480px;
-  float: left; */
   flex-grow: 1;
 }
 #slider .fluxslider {
@@ -800,9 +797,6 @@ app detail
 }
 
 #photo_nav {
-  /* width: 320px;
-  height: 480px;
-  float: right; */
   flex-shrink: 1;
 }
 #photo_nav .thumbnail-list {

@@ -278,7 +278,6 @@ main {
   }
   .param_tit {
     font-size: 16px;
-    //margin-bottom: 15px;
     @include textshadow;
   }
   .param_value {
@@ -738,18 +737,12 @@ app detail
   }
 }
 #slider {
-  /* width: 480px;
-  height: 480px;
-  float: left; */
   flex-grow: 1;
   .fluxslider {
     width: 100% !important;
   }
 }
 #photo_nav {
-  /* width: 320px;
-  height: 480px;
-  float: right; */
   flex-shrink: 1;
   .thumbnail-list {
     display: flex;
