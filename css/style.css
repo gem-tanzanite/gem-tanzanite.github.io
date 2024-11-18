@@ -73,13 +73,13 @@ dd {
   color: white;
   padding: 1rem 5rem;
   border-radius: 2px;
-  border: 1px solid #20264A;
+  border: 1px solid #20264a;
   text-shadow: 0 2px 10px #000, 0 2px 2px #000;
   transition: 0.2s;
 }
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 10px #20264A, 0 0 10px #20264A;
+  box-shadow: 0 0 10px #20264a, 0 0 10px #20264a;
 }
 
 .tac {
@@ -118,7 +118,7 @@ dd {
 }
 
 .global_header {
-  background-image: linear-gradient(#00174E, #00174E);
+  background-image: linear-gradient(#00174e, #00174e);
   padding: 1.1rem 1.8rem;
   height: 60px;
   width: 100%;
@@ -183,16 +183,16 @@ dd {
 }
 
 main {
-  padding: 20px 10px;
   width: 100%;
   overflow: auto;
   height: calc(100% - 60px);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  position: relative;
 }
-main > * {
-  flex: 1 0 auto;
+main .scroll-wrapper {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  padding: 20px 10px;
 }
 
 .app_panel {
@@ -218,6 +218,10 @@ main > * {
 .chart_panel {
   transition: 0.2s;
 }
+.chart_panel img {
+  width: 100%;
+  border-radius: 4px;
+}
 .chart_panel:hover {
   filter: brightness(1.1);
   cursor: pointer;
@@ -228,13 +232,13 @@ main > * {
 }
 
 .chart_temp {
-  background: url(../img/thumb_tenp.jpg) center no-repeat;
-  background-size: cover;
+  /* background: url(../img/thumb_tenp.jpg) center no-repeat;
+  background-size: cover; */
 }
 
 .chart_electro_power {
-  background: url(../img/thumb_power.jpg) center no-repeat;
-  background-size: cover;
+  /* background: url(../img/thumb_power.jpg) center no-repeat;
+  background-size: cover; */
 }
 
 .app_home {
@@ -252,33 +256,36 @@ main > * {
 .app_home .tit {
   color: white;
   text-decoration: none;
-  margin-top: 40px;
   position: relative;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.app_home .tit .fa {
-  font-size: 200%;
-  text-shadow: 0 2px 10px #000, 0 2px 2px #000;
+.app_home .tit > * {
+  flex: 1 0 auto;
 }
-.app_home .tit .tanzanite_logo img {
-  height: 120px;
+.app_home .tit .title-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.app_home .tit p {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
+.app_home .tit .title-content .tanzanite_logo {
+  max-height: 200px;
+}
+.app_home .tit .title-content p {
   font-size: 240%;
-  margin: 0.1rem 0 0;
+  margin: 0;
   text-shadow: 0 2px 10px #000, 0 2px 2px #000;
-  line-height: 1;
 }
 .app_home .params_list {
+  flex-shrink: 1 !important;
+  flex-grow: 0;
   padding: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  flex: 1 0 0;
 }
 .app_home .params_list > * {
   flex: 1 0 auto;
@@ -413,40 +420,29 @@ app detail
 }
 
 .app_detail {
-  width: 100%;
-  height: 420px;
-  position: absolute;
+  width: 100vw;
+  height: calc(100dvh - 60px);
+  position: fixed;
   top: 60px;
   left: 0;
   z-index: 3;
 }
 .app_detail.app_home {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   opacity: 0;
   position: absolute;
   transform: scale(0);
   transition: 0.2s;
-}
-.app_detail.app_home > * {
-  flex: 1 0 auto;
+  padding: 1rem;
+  gap: 1rem;
 }
 .app_detail.app_home .home_vertical_column {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
   flex-direction: column;
 }
-.app_detail.app_home .home_vertical_column > * {
-  flex: 1 0 auto;
-}
-.app_detail.app_home .home_vertical_column > * {
-  flex: none;
-}
 .app_detail.app_home .home_ctrl_main_side {
-  width: 65%;
+  grid-column: 1/span 2;
 }
 .app_detail.app_home .home_ctrl_main_side .tit {
   margin-top: 0;
@@ -462,35 +458,33 @@ app detail
   flex: 1 0 auto;
 }
 .app_detail.app_home .home_ctrl_chart_side {
-  width: 35%;
-  padding: 0.8rem 0.8rem 0.8rem 0;
+  grid-column-start: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-basis: 120px;
 }
 .app_detail.app_home .ctrl_btns {
   border: 1px solid #525252;
   border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-wrap: wrap;
   background-color: #fff;
-  height: 190px;
-}
-.app_detail.app_home .ctrl_btns > * {
-  flex: 1 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 0;
+  margin-bottom: 1rem;
 }
 .app_detail.app_home .ctrl_btns li {
+  border-right: 1px solid #525252;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #525252;
-  width: 25%;
   color: #525252;
   line-height: 1;
   transition: 0.2s;
+  padding: 1rem;
   cursor: pointer;
-}
-.app_detail.app_home .ctrl_btns li > * {
-  flex: 1 0 auto;
 }
 .app_detail.app_home .ctrl_btns li:nth-child(-n+4) {
   border-bottom: 1px solid #525252;
@@ -502,14 +496,19 @@ app detail
   display: block;
   padding: 0.9rem 0 0;
   line-height: 1;
-  color: #20264A;
+  color: #20264a;
+  text-align: center;
 }
 .app_detail.app_home .ctrl_btns li .fa {
   line-height: 1;
   display: block;
   font-size: 40px;
   text-shadow: none;
-  color: #20264A;
+  color: #20264a;
+  text-align: center;
+}
+.app_detail.app_home .ctrl_btns li .img_icon {
+  text-align: center;
 }
 .app_detail.app_home .ctrl_btns li .img_icon img {
   width: 40px;
@@ -527,15 +526,12 @@ app detail
   background-color: rgba(63, 75, 145, 0.2);
 }
 .app_detail.app_home .params_list {
-  flex: 1 0 0;
-}
-.app_detail.app_home .params_list ul {
-  height: 100%;
+  padding: 0 !important;
 }
 .app_detail.app_home .params_list ul li {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 .app_detail.app_home .params_list ul li > * {
@@ -545,11 +541,14 @@ app detail
   font-style: normal;
 }
 .app_detail.app_home .chart_panel {
-  background-color: #fff;
+  /* background-color: #fff;
   border-radius: 4px;
   height: calc(50% - 0.4rem);
   flex: none;
+  &:last-of-type {
+  } */
 }
+
 .detail {
   width: 100vw;
   height: 100dvh;
@@ -627,7 +626,7 @@ app detail
   overflow: hidden;
   width: 680px;
   height: 250px;
-  margin-left: 60px;
+  margin: 60px;
   position: relative;
   animation: show_chart_animation 1.8s 0s;
 }
@@ -885,7 +884,7 @@ app detail
   justify-content: flex-end;
   align-items: center;
   height: 60px;
-  background-image: linear-gradient(#00174E, #00174E);
+  background-image: linear-gradient(#00174e, #00174e);
 }
 .video_app_content .video_detail header > * {
   flex: 1 0 auto;
