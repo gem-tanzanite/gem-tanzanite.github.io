@@ -842,16 +842,13 @@ app detail
 .video_app_content .video_detail #video_nav {
   overflow: hidden;
   height: calc(100% - 60px);
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-.video_app_content .video_detail #video_nav > * {
-  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
 }
 .video_app_content .video_detail #video_nav .thumb_video {
-  flex: 1 0 380px;
   position: relative;
   cursor: pointer;
   transition: 0.05s;
@@ -864,8 +861,10 @@ app detail
 }
 .video_app_content .video_detail #video_nav .thumb_video img {
   width: 100%;
-  height: auto;
+  height: 100%;
   opacity: 0.5;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .video_app_content .video_detail #video_nav .thumb_video .video_tit {
   position: absolute;
