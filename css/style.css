@@ -662,12 +662,19 @@ app detail
   text-align: center;
   padding: 1rem;
   top: 0;
-  left: 40px;
-  font-size: 18px;
-  transition: 0.2s;
+  font-size: 14px;
+  transition: 0.2s opacity 0.4s;
+  visibility: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 .tooltip span {
   display: inline-block;
+}
+.tooltip.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 .touch12monthes {

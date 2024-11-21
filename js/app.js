@@ -189,11 +189,18 @@ $(document).on(
     } else if (this.className.indexOf("touchmonth_li") !== -1) {
       var index_li = Number($(this).attr("id").replace("m", ""));
       if ($(".detail").hasClass("power_detail")) {
-        if (index_li > 9) {
+        /* if (index_li > 9) {
           $(".tooltip").css({ right: 680 - index_li * 61, left: "auto" });
         } else {
           $(".tooltip").css({ left: index_li * 61, right: "auto" });
-        }
+        } */
+        const contaienr = document.querySelector(
+          ".power_detail .chart_area_content"
+        );
+        const rect = contaienr.getBoundingClientRect();
+        $(".tooltip")
+          .css({ left: index_li * 61 + rect.left })
+          .addClass("show");
         $(".tooltip .start_month").text(index_li);
         $(".tooltip .end_month").text(index_li + 1);
         $(".tooltip .used_power_num").text(
@@ -203,11 +210,13 @@ $(document).on(
         $(".touchmonth_li").removeClass("active");
         $(this).addClass("active");
       } else if ($(".detail").hasClass("temp_detail")) {
-        if (index_li > 9) {
-          $(".tooltip").css({ right: 680 - index_li * 79, left: "auto" });
-        } else {
-          $(".tooltip").css({ left: index_li * 79, right: "auto" });
-        }
+        const contaienr = document.querySelector(
+          ".temp_detail .chart_area_content"
+        );
+        const rect = contaienr.getBoundingClientRect();
+        $(".tooltip")
+          .css({ left: index_li * 79 + rect.left + 23 })
+          .addClass("show");
         $(".tooltip .used_power_num").text(temps_data[index_li - 1].temp);
         $(".tooltip .times").text(temps_data[index_li - 1].time);
         $(".touchmonth_li").removeClass("active");
