@@ -203,10 +203,8 @@ main {
 }
 .chart_panel {
   transition: 0.2s;
-  img {
-    width: 100%;
-    border-radius: 4px;
-  }
+  border-radius: 4px;
+
   &:hover {
     filter: brightness(1.1);
     cursor: pointer;
@@ -217,12 +215,13 @@ main {
   }
 }
 .chart_temp {
-  /* background: url(../img/thumb_tenp.jpg) center no-repeat;
-  background-size: cover; */
+  background: url(../img/thumb_tenp.jpg) center no-repeat;
+  background-size: cover;
 }
 .chart_electro_power {
-  /* background: url(../img/thumb_power.jpg) center no-repeat;
-  background-size: cover; */
+  grid-row: 2;
+  background: url(../img/thumb_power.jpg) center no-repeat;
+  background-size: cover;
 }
 
 .app_home {
@@ -267,12 +266,14 @@ main {
       li {
         text-align: center;
         border-left: 1px solid #fff;
-        padding: 0.7rem 0.2em;
         width: 25%;
         height: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
+        gap: 0.2rem;
+        padding: 0.4rem 0;
         &:first-of-type {
           border: none;
         }
@@ -284,6 +285,10 @@ main {
   }
   .param_icon {
     margin-bottom: 10px;
+    display: block;
+    @media screen and (max-height: 520px) {
+      display: none;
+    }
     .fa {
       font-size: 240%;
       @include textshadow;
@@ -294,9 +299,11 @@ main {
     @include textshadow;
   }
   .param_value {
-    font-size: 240%;
-    min-height: 60px;
+    font-size: 160%;
     @include textshadow;
+    @media screen and (min-height: 520px) {
+      font-size: 220%;
+    }
     .unit {
       font-size: 60%;
     }
@@ -304,6 +311,9 @@ main {
       height: 50px;
       position: relative;
       top: -5px;
+      @media screen and (min-height: 480px) {
+        height: 40px;
+      }
     }
   }
   .param_data {
@@ -395,6 +405,7 @@ app detail
   &.app_home {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     opacity: 0;
     position: absolute;
     transform: scale(0);
@@ -404,13 +415,15 @@ app detail
 
     .home_vertical_column {
       // 左右共通
-      display: flex;
-      flex-direction: column;
     }
     .home_ctrl_main_side {
       grid-column: 1 / span 2;
+      display: grid;
+      grid-template-rows: 1.4fr 1fr;
+      gap: 1rem;
       .tit {
         margin-top: 0;
+        grid-row: 1;
       }
       .tit_inner {
         height: 100%;
@@ -420,21 +433,20 @@ app detail
     }
     .home_ctrl_chart_side {
       grid-column-start: 3;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
       gap: 1rem;
-      flex-basis: 120px;
     }
     .ctrl_btns {
       border: 1px solid $bgc;
       border-radius: 4px;
       background-color: #fff;
       width: 100%;
+      height: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
       padding: 0;
-      margin-bottom: 1rem;
       li {
         border-right: 1px solid $bgc;
         display: flex;
@@ -443,7 +455,6 @@ app detail
         color: $bgc;
         line-height: 1;
         transition: 0.2s;
-        padding: 1rem;
         cursor: pointer;
         &:nth-child(-n + 4) {
           border-bottom: 1px solid $bgc;
@@ -489,10 +500,9 @@ app detail
     }
     .params_list {
       padding: 0 !important;
+      grid-row: 2;
       ul {
         li {
-          @include fb(center, center);
-          flex-direction: column;
           em {
             font-style: normal;
           }
