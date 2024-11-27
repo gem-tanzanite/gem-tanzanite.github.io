@@ -642,6 +642,11 @@ app detail
       background-size: 680px 248px;
     }
   }
+  .detail_header {
+    .close-button-wrapper {
+      text-align: right;
+    }
+  }
 }
 @keyframes show_chart_animation {
   0% {
@@ -748,8 +753,9 @@ app detail
 
 .photo_detail {
   .detail_header {
-    padding: 0 0 8px;
+    padding: 0;
     align-items: center;
+    margin-bottom: 1rem;
     .transition_selector {
       flex-grow: 1;
       flex-basis: 0;
@@ -797,7 +803,6 @@ app detail
   .slider_wrapper {
     overflow: hidden;
     display: flex;
-    gap: 16px;
     max-width: 800px;
     margin: auto;
   }
@@ -810,6 +815,7 @@ app detail
 }
 #photo_nav {
   flex-shrink: 1;
+  padding: 1rem;
   .thumbnail-list {
     display: flex;
     flex-wrap: wrap;
@@ -899,10 +905,10 @@ app detail
       @include fb(flex-end, center);
       height: 60px;
       @include header_color;
+      padding-right: 6px;
     }
     .header_close_btn {
-      padding: 1rem 2rem;
-      flex: none;
+      flex-grow: 0;
     }
   }
   .video_play_window {
@@ -923,18 +929,11 @@ app detail
     }
     .detail_close_btn {
       position: absolute;
-      right: 0px;
-      top: 0px;
-      width: 100px;
-      height: 100px;
+      right: 1rem;
+      top: 1rem;
       z-index: 2;
       color: white;
       text-shadow: 0 0 2px #000, 0 0 10px #000;
-      .fa {
-        margin-right: 25px;
-        margin-top: 25px;
-        float: right;
-      }
     }
   }
   &.playing {

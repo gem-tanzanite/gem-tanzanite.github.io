@@ -663,6 +663,9 @@ app detail
   background: url(../img/powerchart_detail_line.png) left top no-repeat;
   background-size: 680px 248px;
 }
+.power_detail .detail_header .close-button-wrapper {
+  text-align: right;
+}
 
 @keyframes show_chart_animation {
   0% {
@@ -768,8 +771,9 @@ app detail
   background-color: #000;
 }
 .photo_detail .detail_header {
-  padding: 0 0 8px;
+  padding: 0;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .photo_detail .detail_header .transition_selector {
   flex-grow: 1;
@@ -817,7 +821,6 @@ app detail
 .photo_detail .slider_wrapper {
   overflow: hidden;
   display: flex;
-  gap: 16px;
   max-width: 800px;
   margin: auto;
 }
@@ -831,6 +834,7 @@ app detail
 
 #photo_nav {
   flex-shrink: 1;
+  padding: 1rem;
 }
 #photo_nav .thumbnail-list {
   display: flex;
@@ -919,13 +923,13 @@ app detail
   align-items: center;
   height: 60px;
   background-image: linear-gradient(#00174e, #00174e);
+  padding-right: 6px;
 }
 .video_app_content .video_detail header > * {
   flex: 1 0 auto;
 }
 .video_app_content .video_detail .header_close_btn {
-  padding: 1rem 2rem;
-  flex: none;
+  flex-grow: 0;
 }
 .video_app_content .video_play_window {
   background-color: #000;
@@ -951,18 +955,11 @@ app detail
 }
 .video_app_content .video_play_window .detail_close_btn {
   position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-  height: 100px;
+  right: 1rem;
+  top: 1rem;
   z-index: 2;
   color: white;
   text-shadow: 0 0 2px #000, 0 0 10px #000;
-}
-.video_app_content .video_play_window .detail_close_btn .fa {
-  margin-right: 25px;
-  margin-top: 25px;
-  float: right;
 }
 .video_app_content.playing .video_play_window {
   transform: scale(1);
