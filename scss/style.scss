@@ -10,7 +10,7 @@ html {
   margin: 0;
   color: #555;
   line-height: 1.6;
-  font-family: DIN Light, Noto, sans-serif;
+  font-family: "Open Sans", Noto, sans-serif;
   overflow: hidden;
   & > section {
     position: relative;
@@ -763,7 +763,7 @@ app detail
     #transition_selection {
       width: 100px;
       font-size: 14px;
-      font-family: DIN Light, sans-serif;
+      font-family: "Open Sans", sans-serif;
       padding: 6px 12px;
       -moz-appearance: none;
       appearance: none;
