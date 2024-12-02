@@ -4,12 +4,12 @@ $header_height: 60px;
 
 @font-face {
   font-family: "DIN Light";
-  src: url(../fonts/din-light-webfont.ttf);
+  src: url(../fonts/open-sans-v40-latin-300.woff2) format("woff2");
 }
 
 @font-face {
   font-family: "Noto";
-  src: url(../fonts/NotoSansCJKJP_demiLight_subset.otf);
+  src: url("../fonts/converted-noteosans.woff2") format("woff2");
 }
 
 @mixin textshadow($c: #000) {
