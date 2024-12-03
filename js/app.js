@@ -124,6 +124,14 @@ var slider;
 var startX = 0;
 var THRESHOLD = 20;
 
+const homeScrollElement = document.querySelector("main");
+
+homeScrollElement.addEventListener("wheel", (e) => {
+  if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+  e.preventDefault();
+  homeScrollElement.scrollLeft += e.deltaY;
+});
+
 function initSlider() {
   slider = new flux.slider("#slider", {
     autoplay: false,
