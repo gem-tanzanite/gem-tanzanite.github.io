@@ -181,7 +181,6 @@ $(document).on(
   "click",
   ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video",
   function (e) {
-    e.stopPropagation();
     if (this.className.indexOf("data_") !== -1) {
       // トップの起床〜就寝までのボタンが押された時
       $(".ctrl_btns li").removeClass("active");
