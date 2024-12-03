@@ -206,6 +206,7 @@ main {
   overflow: auto;
   height: calc(100vh - 60px);
   position: relative;
+  scroll-behavior: smooth;
 }
 main .scroll-wrapper {
   display: flex;

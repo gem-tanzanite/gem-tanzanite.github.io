@@ -192,6 +192,7 @@ main {
   height: calc(100vh - #{$header_height});
   position: relative;
 
+  scroll-behavior: smooth;
   .scroll-wrapper {
     display: flex;
     position: absolute;

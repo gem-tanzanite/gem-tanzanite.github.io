@@ -120,20 +120,16 @@ var transition_types = [
 var transition_type = "random";
 var transtion_type_index = 0;
 
-var slider;
-var startX = 0;
-var THRESHOLD = 20;
-
-const homeScrollElement = document.querySelector("main");
-
+var scrolling = false;
+const homeScrollElement = document.querySelector(".home-scroll");
 homeScrollElement.addEventListener("wheel", (e) => {
   if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
   e.preventDefault();
-  homeScrollElement.scrollLeft += e.deltaY;
+  homeScrollElement.scrollLeft += e.deltaY * 10;
 });
 
 function initSlider() {
-  slider = new flux.slider("#slider", {
+  const slider = new flux.slider("#slider", {
     autoplay: false,
     pagination: false,
   });
@@ -185,6 +181,7 @@ $(document).on(
   "click",
   ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video",
   function (e) {
+    e.stopPropagation();
     if (this.className.indexOf("data_") !== -1) {
       // トップの起床〜就寝までのボタンが押された時
       $(".ctrl_btns li").removeClass("active");
