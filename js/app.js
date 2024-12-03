@@ -120,12 +120,16 @@ var transition_types = [
 var transition_type = "random";
 var transtion_type_index = 0;
 
-var slider;
-var startX = 0;
-var THRESHOLD = 20;
+var scrolling = false;
+const homeScrollElement = document.querySelector(".home-scroll");
+homeScrollElement.addEventListener("wheel", (e) => {
+  if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+  e.preventDefault();
+  homeScrollElement.scrollLeft += e.deltaY * 10;
+});
 
 function initSlider() {
-  slider = new flux.slider("#slider", {
+  const slider = new flux.slider("#slider", {
     autoplay: false,
     pagination: false,
   });
