@@ -201,6 +201,25 @@ main {
   }
 }
 
+.scroll-buttons {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 100%;
+  .icon-button {
+    right: -16px;
+    position: absolute;
+    &[aria-hidden="true"] {
+      display: none;
+    }
+    &.scroll-prev {
+      right: auto;
+      left: -16px;
+    }
+  }
+}
+
 .app_panel {
   box-shadow: 0 2px 2px #333;
   width: 400px;

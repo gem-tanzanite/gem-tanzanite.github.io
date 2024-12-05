@@ -215,6 +215,25 @@ main .scroll-wrapper {
   padding: 20px 10px;
 }
 
+.scroll-buttons {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 100%;
+}
+.scroll-buttons .icon-button {
+  right: -16px;
+  position: absolute;
+}
+.scroll-buttons .icon-button[aria-hidden=true] {
+  display: none;
+}
+.scroll-buttons .icon-button.scroll-prev {
+  right: auto;
+  left: -16px;
+}
+
 .app_panel {
   box-shadow: 0 2px 2px #333;
   width: 400px;

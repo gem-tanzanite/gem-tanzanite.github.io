@@ -306,3 +306,37 @@ $(document).on("click", ".logo", function () {
 // 玄関に人がきた
 
 // chart
+
+// メイン画面のボタンによるスクロール
+
+const scrollButtons = document.querySelectorAll(".scroll-buttons .icon-button");
+scrollButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const moveDistance = e.target.classList.contains("scroll-prev")
+      ? -window.innerWidth
+      : window.innerWidth;
+    const homeWrapper = document.querySelector(".home-scroll");
+
+    homeWrapper.scrollBy({
+      left: moveDistance,
+      behavior: "smooth",
+    });
+    setTimeout(() => {
+      scrollButtons.forEach((button) => {
+        button.setAttribute("aria-hidden", false);
+      });
+      if (homeWrapper.scrollLeft === 0) {
+        document
+          .querySelector(".scroll-prev")
+          .setAttribute("aria-hidden", true);
+      } else if (
+        homeWrapper.scrollLeft ===
+        homeWrapper.scrollWidth - homeWrapper.clientWidth
+      ) {
+        document
+          .querySelector(".scroll-next")
+          .setAttribute("aria-hidden", true);
+      }
+    }, 600);
+  });
+});
