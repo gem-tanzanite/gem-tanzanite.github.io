@@ -547,6 +547,14 @@
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
 readers do not read off random characters that represent icons */
+.fa-arrow-left {
+  --fa: "\f060";
+  --fa--fa: "\f060\f060";
+}
+.fa-arrow-right {
+  --fa: "\f061";
+  --fa--fa: "\f061\f061";
+}
 .fa-bath {
   --fa: "\f2cd";
   --fa--fa: "\f2cd\f2cd";
