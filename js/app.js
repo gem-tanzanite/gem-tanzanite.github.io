@@ -272,7 +272,7 @@ $(document).on("click", ".header_close_btn", function () {
   $(".global_header").removeClass("hide_close");
 });
 
-$("#anchor_id_ctrl").on("click", function (e) {
+$(".app_home").on("click", function (e) {
   $(".global_header").addClass("hide_close");
   location.hash = "#id_ctrl";
 });
