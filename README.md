@@ -15,3 +15,13 @@ When verifying operation in your development environment, use the following brow
 
 - Chrome 109
 - Firefox 91 and 102.x
+
+## How to develop locally
+
+Currently, we use Microsoft Visual Studio Code and compile Sass to CSS using an extension. Please prepare the following environment.
+
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
+2. Install extension in Visual Studio Code.
+  - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  - [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass)
+3. Please start Live Server and Live Sass Compiler.
