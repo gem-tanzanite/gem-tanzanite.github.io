@@ -139,8 +139,7 @@ function initSlider() {
       elem.setAttribute("aria-selected", false);
     });
     this.setAttribute("aria-selected", true);
-    var index = obj.index(this); // 定義順インデックス
-    // インデックス、トランジション（エフェクト）を指定してshowImage呼出し
+    var index = obj.index(this);
     slider.showImage(
       index,
       transition_type === "random" ? undefined : transition_type
@@ -182,7 +181,6 @@ $(document).on(
   ".ctrl_btns li, .touchmonth_li, .chart_panel, .app_photo, .app_video",
   function (e) {
     if (this.className.indexOf("data_") !== -1) {
-      // トップの起床〜就寝までのボタンが押された時
       $(".ctrl_btns li").removeClass("active");
       var datanum = $(this).attr("class");
       $(".app_temp .param_value em").text(params_data[datanum].temp);
@@ -193,11 +191,6 @@ $(document).on(
     } else if (this.className.indexOf("touchmonth_li") !== -1) {
       var index_li = Number($(this).attr("id").replace("m", ""));
       if ($(".detail").hasClass("power_detail")) {
-        /* if (index_li > 9) {
-          $(".tooltip").css({ right: 680 - index_li * 61, left: "auto" });
-        } else {
-          $(".tooltip").css({ left: index_li * 61, right: "auto" });
-        } */
         const contaienr = document.querySelector(
           ".power_detail .chart_area_content"
         );
@@ -281,7 +274,6 @@ $(document).on("change", "#transition_type", function () {
   transition_type = this.value;
 });
 
-// video
 $(document).on("click", "#video_nav .thumb_video", function () {
   $(".video_app_content").addClass("playing");
 });
@@ -291,23 +283,15 @@ $(document).on("click", ".video_app_content .detail_close_btn", function () {
   $(".video_play_window_inner").empty();
 });
 
-//時計
 var worker = new Worker("./js/clock.js");
 worker.addEventListener("message", function (e) {
   $("#meridian").text(e.data.meridian);
   $("time").text(e.data.timeString);
 });
 
-// Header
 $(document).on("click", ".logo", function () {
-  location.href = "index.html"; // reload without hash.(not force reload.)
+  location.href = "index.html";
 });
-
-// 玄関に人がきた
-
-// chart
-
-// メイン画面のボタンによるスクロール
 
 const homeWrapper = document.querySelector(".home-scroll");
 const scrollButtons = document.querySelectorAll(".scroll-buttons .icon-button");
