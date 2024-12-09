@@ -974,12 +974,3 @@ app detail
     }
   }
 }
-
-/* デスクトップPCではLINEボタンを表示しない */
-@media screen and (min-width: 480px) {
-  .sc-li {
-    display: none;
-  }
-}
-
-@import "wu";

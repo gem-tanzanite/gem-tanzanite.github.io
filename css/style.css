@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Open Sans";
   src: url(../fonts/open-sans-v40-latin-300.woff2) format("woff2");
@@ -995,11 +994,3 @@ app detail
 .video_app_content.playing .video_play_window {
   transform: scale(1);
 }
-
-/* デスクトップPCではLINEボタンを表示しない */
-@media screen and (min-width: 480px) {
-  .sc-li {
-    display: none;
-  }
-}
-/* 呉さんのSCSS読み込み */
