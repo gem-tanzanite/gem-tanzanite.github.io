@@ -587,14 +587,6 @@ app detail
 .app_detail.app_home .params_list ul li em {
   font-style: normal;
 }
-.app_detail.app_home .chart_panel {
-  /* background-color: #fff;
-  border-radius: 4px;
-  height: calc(50% - 0.4rem);
-  flex: none;
-  &:last-of-type {
-  } */
-}
 
 .detail {
   width: 100vw;
