@@ -1,4 +1,4 @@
-var params_data = {
+const params_data = {
   data_1: {
     temp: 27,
     strong: "強",
@@ -75,7 +75,7 @@ var params_data = {
   },
 };
 
-var electro_power_data = [
+const electro_power_data = [
   { used_power_num: 365, comp_num: "+63" },
   { used_power_num: 263, comp_num: "+61" },
   { used_power_num: 137, comp_num: "+20" },
@@ -89,7 +89,7 @@ var electro_power_data = [
   { used_power_num: 475, comp_num: "+189" },
 ];
 
-var temps_data = [
+const temps_data = [
   { temp: 22, time: 6 },
   { temp: 23, time: 9 },
   { temp: 25, time: 12 },
@@ -100,7 +100,7 @@ var temps_data = [
   { temp: 20, time: 3 },
 ];
 
-var transition_types = [
+const transition_types = [
   "random",
   "bars",
   "blinds",
@@ -117,10 +117,9 @@ var transition_types = [
   "turn",
 ];
 
-var transition_type = "random";
-var transtion_type_index = 0;
+let transition_type = "random";
+let transtion_type_index = 0;
 
-var scrolling = false;
 const homeScrollElement = document.querySelector(".home-scroll");
 homeScrollElement.addEventListener("wheel", (e) => {
   if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
@@ -133,13 +132,13 @@ function initSlider() {
     autoplay: false,
     pagination: false,
   });
-  var obj = $("#photo_nav div.img");
+  const obj = $("#photo_nav div.img");
   obj.on("click", function (event) {
     obj.each((i, elem) => {
       elem.setAttribute("aria-selected", false);
     });
     this.setAttribute("aria-selected", true);
-    var index = obj.index(this);
+    const index = obj.index(this);
     slider.showImage(
       index,
       transition_type === "random" ? undefined : transition_type
@@ -147,7 +146,7 @@ function initSlider() {
     event.preventDefault();
   });
 
-  var selector = $("#transition_selection");
+  const selector = $("#transition_selection");
   selector.text(transition_types[transtion_type_index]);
   selector.on("click", function () {
     if (transtion_type_index < transition_types.length - 1) {
@@ -162,7 +161,7 @@ function initSlider() {
 
 function initVideoViewerEvent() {
   $("#video_nav").on("click", function (e) {
-    var video_url = "";
+    let video_url = "";
     if ($(e.target).hasClass("thumb_video")) {
       video_url = $(e.target).data("video-url");
     } else {
@@ -182,14 +181,14 @@ $(document).on(
   function (e) {
     if (this.className.indexOf("data_") !== -1) {
       $(".ctrl_btns li").removeClass("active");
-      var datanum = $(this).attr("class");
+      const datanum = $(this).attr("class");
       $(".app_temp .param_value em").text(params_data[datanum].temp);
       $(".app_temp .param_data ").text("冷房｜" + params_data[datanum].strong);
       $(".app_tv .param_value em").text(params_data[datanum].tv_ch);
       $(".app_tv .param_data em").text(params_data[datanum].tv_name);
       $(this).addClass("active");
     } else if (this.className.indexOf("touchmonth_li") !== -1) {
-      var index_li = Number($(this).attr("id").replace("m", ""));
+      const index_li = Number($(this).attr("id").replace("m", ""));
       if ($(".detail").hasClass("power_detail")) {
         const contaienr = document.querySelector(
           ".power_detail .chart_area_content"
@@ -220,7 +219,7 @@ $(document).on(
         $(this).addClass("active");
       }
     } else if (this.className.indexOf("chart_panel") !== -1) {
-      var load_page =
+      const load_page =
         this.className.indexOf("chart_temp") === -1
           ? "./power_detail.html"
           : "./temp_detail.html";
@@ -235,7 +234,7 @@ $(document).on(
         .load("./photo_viewer.html", function () {
           if (window.innerWidth <= 480) {
             $.map($(".detail.photo_detail img"), function (element, i) {
-              var path = $(element).attr("src");
+              const path = $(element).attr("src");
               path = path.replace("img/photo", "img/photo-small");
               $(element).attr("src", path);
             });
@@ -283,7 +282,7 @@ $(document).on("click", ".video_app_content .detail_close_btn", function () {
   $(".video_play_window_inner").empty();
 });
 
-var worker = new Worker("./js/clock.js");
+const worker = new Worker("./js/clock.js");
 worker.addEventListener("message", function (e) {
   $("#meridian").text(e.data.meridian);
   $("time").text(e.data.timeString);
