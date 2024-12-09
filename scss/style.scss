@@ -175,8 +175,6 @@ button.icon-button {
     top: 6px;
     font-size: 26px;
     display: none;
-    .fa {
-    }
   }
   &.hide_close {
     .timer,
@@ -463,9 +461,6 @@ app detail
     padding: 1rem;
     gap: 1rem;
 
-    .home_vertical_column {
-      // 左右共通
-    }
     .home_ctrl_main_side {
       grid-column: 1 / span 2;
       display: grid;
@@ -558,15 +553,6 @@ app detail
           }
         }
       }
-    }
-
-    .chart_panel {
-      /* background-color: #fff;
-      border-radius: 4px;
-      height: calc(50% - 0.4rem);
-      flex: none;
-      &:last-of-type {
-      } */
     }
   }
 }
@@ -893,7 +879,6 @@ app detail
       grid-template-rows: repeat(2, 1fr);
       grid-column-gap: 8px;
       grid-row-gap: 8px;
-
       .thumb_video {
         position: relative;
         cursor: pointer;
@@ -974,12 +959,3 @@ app detail
     }
   }
 }
-
-/* デスクトップPCではLINEボタンを表示しない */
-@media screen and (min-width: 480px) {
-  .sc-li {
-    display: none;
-  }
-}
-
-@import "wu";
