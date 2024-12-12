@@ -11,6 +11,26 @@ $header_height: 60px;
   font-family: "Noto";
   src: url("../fonts/converted-noteosans.woff2") format("woff2");
 }
+:root,
+:host {
+  --fa-style-family-classic: "Font Awesome 6 Pro";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Pro";
+  --fa-style: var(--fa-font-regular);
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fonts/fa-regular-400.woff2") format("woff2"),
+    url("../fonts/fa-regular-400.ttf") format("truetype");
+}
+
+.far,
+.fa-regular {
+  font-weight: 400;
+}
 
 @mixin textshadow($c: #000) {
   text-shadow: 0 2px 10px $c, 0 2px 2px $c;
