@@ -863,29 +863,36 @@ app detail
   flex-wrap: wrap;
 }
 @media screen and (min-width: 480px) {
-  #photo_nav .img {
+  #photo_nav [role=tab] {
     width: 25%;
     aspect-ratio: 1;
   }
 }
-#photo_nav .img {
+#photo_nav [role=tab] {
   display: block;
   cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 0;
+  border: none;
+  position: relative;
+  transition: all 0.6s;
   transition: 0.05s;
 }
-#photo_nav .img img {
+#photo_nav [role=tab] img {
   width: 100%;
   aspect-ratio: 1;
 }
-#photo_nav .img:hover {
+#photo_nav [role=tab]:hover {
   filter: brightness(1.2);
 }
-#photo_nav .img:active {
+#photo_nav [role=tab]:active {
   filter: brightness(0.7);
 }
-#photo_nav .img[aria-selected=true] {
-  outline: 2px solid #fff;
-  outline-style: inset;
+#photo_nav [role=tab][aria-selected=true] {
+  outline: 4px solid #fff;
+  z-index: 1;
   transform: scale(0.95);
 }
 

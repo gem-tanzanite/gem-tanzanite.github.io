@@ -132,7 +132,7 @@ function initSlider() {
     autoplay: false,
     pagination: false,
   });
-  const obj = $("#photo_nav div.img");
+  const obj = $(".thumbnail-list [role='tab']");
   obj.on("click", function (event) {
     obj.each((i, elem) => {
       elem.setAttribute("aria-selected", false);
